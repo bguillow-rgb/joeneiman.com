@@ -1,0 +1,32 @@
+/* Placeholder styles. Kurt owns the real design; this only keeps the
+   holding page clean in both light and dark mode. */
+:root {
+  --bg: #fafaf8;
+  --fg: #1b1d22;
+  --muted: #6b6f78;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #121417; --fg: #ecebe6; --muted: #9a9ea6; color-scheme: dark; }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: Georgia, 'Times New Roman', serif;
+  -webkit-font-smoothing: antialiased;
+}
+.site-header { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: baseline; padding: 1.5rem max(16px, 4vw); }
+.site-name { font-weight: 700; color: var(--fg); text-decoration: none; }
+.site-nav { display: flex; flex-wrap: wrap; gap: 1rem; }
+.site-nav a { color: var(--muted); text-decoration: none; }
+.holding {
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  padding: 2rem max(16px, 4vw);
+}
+.holding h1 { font-size: clamp(2.5rem, 7vw, 4.5rem); font-weight: 400; letter-spacing: -0.01em; margin: 0; }
+.holding p { color: var(--muted); font-family: system-ui, sans-serif; font-size: 0.95rem; margin-top: 1rem; }

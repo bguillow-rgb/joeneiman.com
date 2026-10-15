@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../consts';
+---
+<BaseLayout>
+  {SITE.launched ? (
+    <section>
+      <!-- Launch homepage goes here once Joe approves the copy. -->
+    </section>
+  ) : (
+    <section class="holding">
+      <h1>Joe Neiman</h1>
+      <p>New site coming soon.</p>
+    </section>
+  )}
+</BaseLayout>
