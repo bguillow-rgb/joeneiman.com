@@ -91,7 +91,7 @@ mark.pending {
 }
 .hero-overlay h1 { margin: 0 0 0.4rem; color: inherit; }
 .hero-overlay .lede { max-width: 38rem; margin: 0; color: inherit; }
-.split { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2.2rem, 5vw, 5rem); align-items: center; margin: 2.2rem 0; }
+.split { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2.2rem, 5vw, 5rem); align-items: start; margin: 2.2rem 0; }
 .split.narrow-img { grid-template-columns: 1.4fr 0.6fr; }
 .split.flip { grid-template-columns: 0.9fr 1.1fr; }
 .split.flip > figure { order: -1; }
