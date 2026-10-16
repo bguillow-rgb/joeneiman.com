@@ -16,6 +16,7 @@
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; }
+body { overflow-x: hidden; }
 body {
   background: var(--bg);
   color: var(--fg);
@@ -80,7 +81,7 @@ mark.pending {
 /* Layout machinery: full-bleed hero, split rows, card grid. Still wireframe-
    plain in color and type; Kurt restyles, but the page structure is real. */
 .full-bleed { width: 100vw; margin-left: calc(50% - 50vw); }
-.hero-full { position: relative; margin: -2.5rem 0 2.5rem; }
+.hero-full { position: relative; margin-top: -2.5rem; margin-bottom: 2.5rem; }
 .hero-full img { display: block; width: 100%; height: min(72vh, 640px); object-fit: cover; object-position: center 30%; border-radius: 0; }
 .hero-overlay {
   position: absolute; inset: auto 0 0 0;
