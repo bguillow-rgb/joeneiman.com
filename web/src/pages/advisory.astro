@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { url } from '../consts';
+---
+<BaseLayout title="Advisory" path="/advisory" description="Where Joe Neiman advises and mentors: startup scaling, marketplaces, the auto business, and founders who want a sounding board.">
+  <h1>Advisory and mentoring</h1>
+
+  <p class="lede">
+    I mostly get pulled into things informally: a founder who needs a gut check,
+    a dealer weighing a sale, somebody staring at a term sheet. The areas where I
+    can actually help are startup scaling, marketplaces, the auto dealer and used
+    car business, and general aviation.
+  </p>
+
+  <h2>Current roles</h2>
+  <ul>
+    <li><strong>FoodNerd</strong>, advisor and mentor. <mark class="pending">confirm FoodNerd is OK being named</mark></li>
+  </ul>
+
+  <h2>How I think about it</h2>
+  <p>
+    I was on the other side of this for years. The advice that helped me never
+    came from a framework. It came from people who had actually done the thing
+    and would tell me the truth about it, and that's the only kind I try to give.
+  </p>
+  <p>
+    If you're building something in my lanes and want a straight answer,
+    <a href={url('/contact')}>reach out</a>.
+  </p>
+
+  <div class="wf-note">Wireframe note: membership groups intentionally left off (Joe was unsure about naming them). Any advisory list gets an attorney pass before launch.</div>
+</BaseLayout>

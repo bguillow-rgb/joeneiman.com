@@ -4,11 +4,11 @@ export const SITE = {
   name: 'Joe Neiman',
   url: 'https://joeneiman.com',
   locale: 'en-US',
-  // Flip to true only after Joe has approved the launch copy. While false,
-  // the homepage is a name-only holding page and every page is noindex.
+  // Flip to true at launch, after Joe approves the copy. While false, every
+  // page carries noindex and the draft ribbon shows.
   launched: false,
-  // Approved one-line description. Stays empty until Joe signs off on it.
-  description: '',
+  description:
+    'Entrepreneur and pilot. Co-founder of ACV Auctions, founder of DealerClub. Buying and building dealerships, flying, and writing about what it all taught me.',
   // Profiles that belong to Joe, used for Person schema sameAs. Add only
   // ones Joe confirms.
   sameAs: [
@@ -21,7 +21,13 @@ export const SITE = {
   },
 };
 
-// Navigation for the full site. Rendered only after launch.
+// Prefix a root-relative path with the build's base URL, so links work on
+// the GitHub Pages preview (/joeneiman.com/...) and on the real domain.
+export const url = (p: string): string => {
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+  return p === '/' ? (base || '/') : base + p;
+};
+
 export const NAV = [
   { label: 'About', href: '/about' },
   { label: 'Ventures', href: '/ventures' },

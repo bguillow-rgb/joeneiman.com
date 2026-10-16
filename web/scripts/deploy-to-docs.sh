@@ -1,28 +1,29 @@
 #!/usr/bin/env bash
-# Build the Astro site and replace the contents of ../docs with the build.
-# GitHub Pages on this repo is configured to serve /docs from the main
-# branch, so this is the publish step.
+# Build the Astro site and replace ../docs with the build. GitHub Pages
+# serves /docs from main.
 #
-# Run from web/:  bash scripts/deploy-to-docs.sh
+# Default: PREVIEW build for https://bguillow-rgb.github.io/joeneiman.com/
+# (base path set, no CNAME).
+# Launch:  LAUNCH=1 bash scripts/deploy-to-docs.sh
+# (root base, copies ../CNAME.launch in as CNAME to bind joeneiman.com).
 set -euo pipefail
-
 cd "$(dirname "$0")/.."
 
-echo "==> Building Astro site"
-npm run build
+if [ "${LAUNCH:-}" = "1" ]; then
+  echo "==> LAUNCH build (joeneiman.com)"
+  npm run build
+else
+  echo "==> PREVIEW build (bguillow-rgb.github.io/joeneiman.com)"
+  PREVIEW=1 npm run build
+fi
 
 DOCS_DIR="../docs"
-
-echo "==> Replacing $DOCS_DIR with fresh build"
-# Preserve nothing — public/CNAME is rebuilt into dist by Astro and copied
-# below. This is intentionally destructive: if you have manual files in
-# /docs that aren't in /web, move them into /web first.
 rm -rf "$DOCS_DIR"
 mkdir -p "$DOCS_DIR"
 cp -R dist/. "$DOCS_DIR"/
 
-echo "==> /docs now contains:"
-ls "$DOCS_DIR"
+if [ "${LAUNCH:-}" = "1" ]; then
+  cp ../CNAME.launch "$DOCS_DIR/CNAME"
+fi
 
-echo ""
-echo "Done. Commit the changes in /docs and push to publish."
+echo "==> /docs ready. Commit and push to publish."
