@@ -4,6 +4,11 @@ import { url } from '../consts';
 ---
 <BaseLayout path="">
   <h1>Joe Neiman</h1>
+
+  <figure class="hero">
+    <img src={url('/assets/photos/cockpit.jpg')} alt="Joe Neiman at the controls of his TBM at sunset, headset on" width="1400" height="1274" loading="eager" />
+  </figure>
+
   <p class="lede">
     I'm an average guy who has been able to achieve some pretty incredible outcomes
     through a combination of thinking big, trusting my gut, learning from failures
@@ -18,11 +23,10 @@ import { url } from '../consts';
     I'm working on turning two decades of lessons into a book.
   </p>
 
-  <figure>
-    <img src={url('/assets/photos/joe-porsche-wide.jpg')} alt="Joe Neiman standing beside a white air-cooled Porsche 911" width="1800" height="1200" loading="eager" />
-  </figure>
-
   <h2>What I'm looking for</h2>
+  <figure>
+    <img src={url('/assets/photos/joe-porsche-wide.jpg')} alt="Joe Neiman standing beside a white air-cooled Porsche 911" width="1800" height="1200" loading="lazy" />
+  </figure>
   <p>
     I'm building a portfolio of franchise car dealerships because I believe in the
     resiliency of the US auto industry and the cultural stronghold that automobiles

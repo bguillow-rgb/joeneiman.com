@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { url } from '../consts';
 ---
 <BaseLayout title="Giving" path="/giving" description="The causes Joe Neiman supports: Merici's fight against child trafficking, and Angel Flight missions with SkyHope.">
   <h1>Giving</h1>
@@ -15,6 +16,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </p>
 
   <h2>SkyHope</h2>
+  <figure>
+    <img src={url('/assets/photos/tbm-door.jpg')} alt="Joe Neiman giving a thumbs-up from the open door of his TBM on the ramp" width="1200" height="1600" loading="lazy" />
+  </figure>
   <p>
     I'm starting to fly Angel Flight missions for SkyHope, using the plane and the
     ratings to get patients and their families where they need to be, at no cost
