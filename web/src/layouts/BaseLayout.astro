@@ -46,11 +46,6 @@ const hideFromSearch = noindex || !SITE.launched;
     <slot name="head" />
   </head>
   <body>
-    {!SITE.launched && (
-      <div class="draft-ribbon">
-        Draft preview. Not live yet.
-      </div>
-    )}
     <header class="site-header">
       <a class="site-name" href={url('/')}>{SITE.name}</a>
       <nav class="site-nav">

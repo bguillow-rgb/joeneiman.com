@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { url } from '../consts';
 ---
-<BaseLayout title="Advisory" path="/advisory" description="Where Joe Neiman advises and mentors: startup scaling, marketplaces, the auto business, and founders who want a sounding board.">
+<BaseLayout wide title="Advisory" path="/advisory" description="Where Joe Neiman advises and mentors: startup scaling, marketplaces, the auto business, and founders who want a sounding board.">
   <h1>Advisory and mentoring</h1>
 
   <p class="lede">
@@ -12,19 +12,24 @@ import { url } from '../consts';
     marketplaces, the auto dealer and used car business, and general aviation.
   </p>
 
-  <h2>Current roles</h2>
-  <ul>
-    <li><strong>FoodNerd</strong>, advisor and mentor.</li>
-  </ul>
-
-  <h2>How I think about it</h2>
-  <p>
-    I was on the other side of this for years. The advice that actually helped me
-    came from people who had done the thing themselves and would tell me the truth
-    about it, and that's the kind I try to give.
-  </p>
-  <p>
-    If you're building something in my lanes and want a straight answer,
-    <a href={url('/contact')}>reach out</a>.
-  </p>
+  <div class="split">
+    <div>
+      <h2>How I think about it</h2>
+      <p>
+        I was on the other side of this for years. The advice that actually helped me
+        came from people who had done the thing themselves and would tell me the truth
+        about it, and that's the kind I try to give.
+      </p>
+      <p>
+        If you're building something in my lanes and want a straight answer,
+        <a href={url('/contact')}>reach out</a>.
+      </p>
+    </div>
+    <div>
+      <h2>Current roles</h2>
+      <ul>
+        <li><strong>FoodNerd</strong>, advisor and mentor.</li>
+      </ul>
+    </div>
+  </div>
 </BaseLayout>
