@@ -76,3 +76,38 @@ mark.pending {
   font-family: system-ui, sans-serif; font-size: 0.85rem;
   padding: 0.6rem 0.9rem; margin: 1.2rem 0;
 }
+
+/* Layout machinery: full-bleed hero, split rows, card grid. Still wireframe-
+   plain in color and type; Kurt restyles, but the page structure is real. */
+.full-bleed { width: 100vw; margin-left: calc(50% - 50vw); }
+.hero-full { position: relative; margin: -2.5rem 0 2.5rem; }
+.hero-full img { display: block; width: 100%; height: min(72vh, 640px); object-fit: cover; object-position: center 30%; border-radius: 0; }
+.hero-overlay {
+  position: absolute; inset: auto 0 0 0;
+  padding: 4rem max(16px, 7vw) 2.2rem;
+  background: linear-gradient(to top, rgba(10,11,13,0.82), rgba(10,11,13,0));
+  color: #f4f3ee;
+}
+.hero-overlay h1 { margin: 0 0 0.4rem; color: inherit; }
+.hero-overlay .lede { max-width: 38rem; margin: 0; color: inherit; }
+.split { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2.2rem; align-items: center; margin: 2.8rem 0; }
+.split.flip { grid-template-columns: 0.9fr 1.1fr; }
+.split.flip > figure { order: -1; }
+.split figure { margin: 0; }
+.split h2 { margin-top: 0; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin: 1.2rem 0 0; padding: 0; list-style: none; }
+.card-grid li { margin: 0; }
+.card-grid a {
+  display: block; height: 100%; padding: 1rem 1.1rem;
+  border: 1px solid var(--line); border-radius: 4px;
+  color: var(--fg); text-decoration: none;
+}
+.card-grid a:hover { border-color: var(--muted); }
+.card-grid .card-title { font-weight: 600; display: block; margin-bottom: 0.35rem; }
+.card-grid .card-sub { font-family: system-ui, sans-serif; font-size: 0.85rem; color: var(--muted); }
+.band { border-top: 1px solid var(--line); margin-top: 2.8rem; padding-top: 2rem; }
+@media (max-width: 720px) {
+  .split, .split.flip { grid-template-columns: 1fr; gap: 1.2rem; }
+  .split.flip > figure { order: 0; }
+  .hero-full img { height: 54vh; }
+}

@@ -10,9 +10,10 @@ interface Props {
   description?: string;
   path?: string;
   noindex?: boolean;
+  wide?: boolean;
 }
 
-const { title, description = SITE.description, path = '', noindex = false } = Astro.props;
+const { title, description = SITE.description, path = '', noindex = false, wide = false } = Astro.props;
 
 const canonical = `${SITE.url}${path}`;
 const fullTitle = title ? `${title} | ${SITE.name}` : SITE.name;
@@ -56,7 +57,7 @@ const hideFromSearch = noindex || !SITE.launched;
         {NAV.map((item) => <a href={url(item.href)}>{item.label}</a>)}
       </nav>
     </header>
-    <main>
+    <main class={wide ? 'wide' : undefined}>
       <slot />
     </main>
     <footer class="site-footer">

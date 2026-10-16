@@ -2,19 +2,22 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { url } from '../consts';
 ---
-<BaseLayout title="About" path="/about" description="Joe Neiman's story: flipping cars at 15, co-founding ACV Auctions through its $5B IPO, founding DealerClub, flying, and healing.">
+<BaseLayout wide title="About" path="/about" description="Joe Neiman's story: flipping cars at 15, co-founding ACV Auctions through its $5B IPO, founding DealerClub, flying, and healing.">
   <h1>About</h1>
 
-  <figure>
-    <img src={url('/assets/photos/joe-portrait.jpg')} alt="Portrait of Joe Neiman" width="1066" height="1600" loading="eager" />
-  </figure>
-
-  <p class="lede">
+  <div class="split">
+    <div>
+      <p class="lede">
     I grew up outside Albany, New York, in a town nobody has heard of. I learned
     the value of hard work early on through a combination of manual labor as a
     landscaper and construction worker and mechanic, as well as buying and selling
     cars in my parents' driveway starting at 15 years old.
-  </p>
+      </p>
+    </div>
+    <figure>
+      <img src={url('/assets/photos/joe-portrait.jpg')} alt="Portrait of Joe Neiman" width="1066" height="1600" loading="eager" />
+    </figure>
+  </div>
 
   <h2>The first car</h2>
   <p>
