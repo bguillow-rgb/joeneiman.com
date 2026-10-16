@@ -41,8 +41,8 @@ body {
 .site-nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1.1rem; }
 .site-nav a { color: var(--muted); text-decoration: none; font-family: system-ui, sans-serif; font-size: 0.9rem; }
 .site-nav a:hover { color: var(--fg); }
-main { max-width: 46rem; margin: 0 auto; padding: 2.5rem max(16px, 4vw) 4rem; }
-main.wide { max-width: 62rem; }
+main { max-width: 56rem; margin: 0 auto; padding: 2.5rem max(16px, 4vw) 4rem; }
+main.wide { max-width: 86rem; }
 h1 { font-size: clamp(1.9rem, 4.5vw, 2.6rem); line-height: 1.15; font-weight: 400; margin: 0 0 1rem; }
 h2 { font-size: 1.3rem; margin: 2.2rem 0 0.6rem; font-weight: 600; }
 p { margin: 0 0 1rem; }
@@ -91,7 +91,7 @@ mark.pending {
 }
 .hero-overlay h1 { margin: 0 0 0.4rem; color: inherit; }
 .hero-overlay .lede { max-width: 38rem; margin: 0; color: inherit; }
-.split { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2.2rem; align-items: center; margin: 2.8rem 0; }
+.split { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2.2rem, 5vw, 5rem); align-items: center; margin: 2.8rem 0; }
 .split.flip { grid-template-columns: 0.9fr 1.1fr; }
 .split.flip > figure { order: -1; }
 .split figure { margin: 0; }
