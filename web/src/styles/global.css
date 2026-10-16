@@ -95,6 +95,7 @@ mark.pending {
 .split.flip { grid-template-columns: 0.9fr 1.1fr; }
 .split.flip > figure { order: -1; }
 .split figure { margin: 0; }
+.split figure img { width: 100%; max-height: clamp(360px, 62vh, 640px); object-fit: cover; object-position: center 28%; }
 .split h2 { margin-top: 0; }
 .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin: 1.2rem 0 0; padding: 0; list-style: none; }
 .card-grid li { margin: 0; }
