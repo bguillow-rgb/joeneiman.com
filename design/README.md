@@ -23,8 +23,13 @@ https://bguillow-rgb.github.io/joeneiman.com/ - you own everything visual.
 | ipo-day-nasdaq.jpg | 568x696 | unused - ACV IPO day at the Nasdaq; candidate for About/ACV section |
 | web/public/assets/photos/*.jpg | web-sized | what the wireframe serves today (incl. waco.jpg, avanti.jpg, joe-headshot.jpg, joe-porsche-wide.jpg) |
 
-More photos are being collected (stage shots, dealership era, legal pad,
-bookshelf); they'll land in this folder as they arrive.
+Added 2026-10-16 (texted by Joe): 43north-win.jpg (ACV's 43North win on stage,
+cropped from a screenshot - low res, used small), nada-cars-commerce.jpg (the
+acquisition announcement), studio-set.jpg (video set - Speaking), wing-sunset.jpg
+(home band), cessna-ttx.jpg + epic-e1000.jpg + cirrus-hangar.jpg + fbo-sunset.jpg
++ flying-headset.jpg (aviation), ski-selfie.jpg + backcountry-ski.jpg +
+experts-only-sign.jpg (About health/life row; sign unused). Still wanted: legal
+pad, dealership-era stills, bookshelf.
 
 ## Video
 - In Demand Auto commercial (2014): https://vimeo.com/84672070 - embedded on
