@@ -82,7 +82,7 @@ mark.pending {
    plain in color and type; Kurt restyles, but the page structure is real. */
 .full-bleed { width: 100vw; margin-left: calc(50% - 50vw); }
 .hero-full { position: relative; margin-top: -2.5rem; margin-bottom: 2.5rem; }
-.hero-full img { display: block; width: 100%; height: min(72vh, 640px); object-fit: cover; object-position: center 30%; border-radius: 0; }
+.hero-full img { display: block; width: 100%; height: clamp(420px, 84vh, 840px); object-fit: cover; object-position: center 44%; border-radius: 0; }
 .hero-overlay {
   position: absolute; inset: auto 0 0 0;
   padding: 4rem max(16px, 7vw) 2.2rem;
@@ -110,5 +110,5 @@ mark.pending {
 @media (max-width: 720px) {
   .split, .split.flip { grid-template-columns: 1fr; gap: 1.2rem; }
   .split.flip > figure { order: 0; }
-  .hero-full img { height: 54vh; }
+  .hero-full img { height: 58vh; }
 }
