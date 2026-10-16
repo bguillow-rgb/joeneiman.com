@@ -114,7 +114,7 @@ mark.pending {
   .hero-full img { height: 58vh; }
 }
 
-.page-hero img { height: clamp(260px, 46vh, 460px); object-position: center 42%; }
+.page-hero img { height: clamp(380px, 72vh, 760px); object-position: center 30%; }
 .page-hero .hero-overlay { padding-bottom: 1.6rem; }
 .card-grid.static li {
   padding: 1rem 1.1rem; border: 1px solid var(--line); border-radius: 4px;
