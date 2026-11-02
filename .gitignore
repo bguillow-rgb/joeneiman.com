@@ -9,3 +9,6 @@ web/.astro/
 notes/
 .DS_Store
 CLAUDE.md
+
+# Built by .github/workflows/deploy.yml on push; never committed
+docs/
