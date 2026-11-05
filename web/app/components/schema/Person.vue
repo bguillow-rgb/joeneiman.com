@@ -1,5 +1,5 @@
----
-import { SITE } from '../../consts';
+<script setup>
+import { SITE } from '~/utils/site';
 
 // Person schema for Joe. Emitted site-wide after launch so search and AI
 // engines tie joeneiman.com to the right Joe Neiman. Only approved facts go
@@ -12,5 +12,12 @@ const schema = {
   ...(SITE.description ? { description: SITE.description } : {}),
   sameAs: SITE.sameAs.filter(Boolean),
 };
----
-<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+useHead({
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }],
+});
+</script>
+
+<template>
+  <span hidden />
+</template>

@@ -1,0 +1,42 @@
+// Site constants. Imported first by main.scss, and injected into every
+// component <style lang="scss"> block via vite additionalData, so anything
+// defined here is available everywhere without an explicit import.
+//
+// Bootstrap reads the $-variables that share its names ($body-bg,
+// $font-family-base, ...) when main.scss imports it after this file.
+
+// Palette (light). Dark values live in the :root media query in _base.scss.
+$bg: #fafaf8;
+$fg: #1b1d22;
+$muted: #6b6f78;
+$line: #e2e1dc;
+$note: #8a6d1f;
+$note-bg: #faf3dc;
+
+$bg-dark: #121417;
+$fg-dark: #ecebe6;
+$muted-dark: #9a9ea6;
+$line-dark: #2a2d33;
+$note-dark: #d8b44a;
+$note-bg-dark: #2e2812;
+
+// Type
+$font-serif: Georgia, 'Times New Roman', serif;
+$font-sans: system-ui, sans-serif;
+
+// Layout
+$measure: 56rem;
+$measure-wide: 86rem;
+$gutter: max(16px, 4vw);
+$breakpoint-stack: 720px;
+
+// Bootstrap overrides
+$font-family-base: $font-serif;
+$body-bg: $bg;
+$body-color: $fg;
+$link-color: $fg;
+$link-hover-color: $muted;
+$border-color: $line;
+$line-height-base: 1.6;
+$headings-font-weight: 400;
+$enable-dark-mode: false;

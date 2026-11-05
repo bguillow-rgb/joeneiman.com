@@ -1,7 +1,9 @@
 node_modules/
-web/dist/
-web/.astro/
-.astro/
+web/.nuxt/
+web/.output/
+web/.data/
+# `nuxt generate` leaves a dist symlink pointing at .output/public
+web/dist
 .env
 .env.*
 !.env.example

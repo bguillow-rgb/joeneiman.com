@@ -1,0 +1,6 @@
+// Global stylesheet. Order matters: constants first so Bootstrap picks up
+// the overrides, then Bootstrap, then the site's own styles.
+@import 'constants';
+@import 'bootstrap/scss/bootstrap';
+@import 'base';
+@import 'layout';

@@ -1,4 +1,4 @@
-// Site-wide constants. Single source of truth for the Astro site.
+// Site-wide constants. Single source of truth for the site.
 
 export const SITE = {
   name: 'Joe Neiman',
@@ -14,18 +14,6 @@ export const SITE = {
   sameAs: [
     'https://www.linkedin.com/in/joe-neiman-577181aa/',
   ],
-  analytics: {
-    ga4Id: import.meta.env.PUBLIC_GA4_ID ?? '',
-    gscVerification: import.meta.env.PUBLIC_GSC_VERIFICATION ?? '',
-    indexNowKey: import.meta.env.PUBLIC_INDEXNOW_KEY ?? '',
-  },
-};
-
-// Prefix a root-relative path with the build's base URL, so links work on
-// the GitHub Pages preview (/joeneiman.com/...) and on the real domain.
-export const url = (p: string): string => {
-  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-  return p === '/' ? (base || '/') : base + p;
 };
 
 export const NAV = [

@@ -1,0 +1,86 @@
+/* Wireframe styles only. Deliberately plain: readable typography, sane
+   spacing, zero visual opinion. Annotation helpers at the bottom are for
+   the review phase and go away at launch. */
+:root {
+  --bg: #{$bg};
+  --fg: #{$fg};
+  --muted: #{$muted};
+  --line: #{$line};
+  --note: #{$note};
+  --note-bg: #{$note-bg};
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #{$bg-dark};
+    --fg: #{$fg-dark};
+    --muted: #{$muted-dark};
+    --line: #{$line-dark};
+    --note: #{$note-dark};
+    --note-bg: #{$note-bg-dark};
+    color-scheme: dark;
+  }
+}
+html, body { margin: 0; }
+body {
+  overflow-x: hidden;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: $font-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+.draft-ribbon {
+  background: var(--note-bg);
+  color: var(--note);
+  font-family: $font-sans;
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 0.45rem $gutter;
+}
+.site-header {
+  display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; align-items: baseline;
+  padding: 1.25rem $gutter;
+  border-bottom: 1px solid var(--line);
+}
+.site-name { font-weight: 700; color: var(--fg); text-decoration: none; font-size: 1.1rem; }
+.site-nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1.1rem; }
+.site-nav a { color: var(--muted); text-decoration: none; font-family: $font-sans; font-size: 0.9rem; }
+.site-nav a:hover { color: var(--fg); }
+main { max-width: $measure; margin: 0 auto; padding: 2.5rem $gutter 4rem; }
+main.wide { max-width: $measure-wide; }
+h1 { font-size: clamp(1.9rem, 4.5vw, 2.6rem); line-height: 1.15; font-weight: 400; margin: 0 0 1rem; }
+h2 { font-size: 1.3rem; margin: 2.2rem 0 0.6rem; font-weight: 600; }
+p { margin: 0 0 1rem; }
+img { max-width: 100%; height: auto; border-radius: 2px; }
+.lede { font-size: 1.15rem; }
+.muted { color: var(--muted); }
+figure { margin: 1.5rem 0; }
+figcaption { font-family: $font-sans; font-size: 0.8rem; color: var(--muted); margin-top: 0.4rem; }
+.photo-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.photo-row figure { flex: 1 1 240px; margin: 0.5rem 0; }
+ul { padding-left: 1.2rem; }
+li { margin-bottom: 0.45rem; }
+.cta { display: inline-block; font-family: $font-sans; border: 1px solid var(--fg); color: var(--fg); text-decoration: none; padding: 0.55rem 1.1rem; margin-top: 0.5rem; }
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 1.5rem $gutter 2.5rem;
+  display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; justify-content: space-between;
+  font-family: $font-sans; font-size: 0.85rem; color: var(--muted);
+}
+.site-footer nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; }
+.site-footer a { color: var(--muted); text-decoration: none; }
+
+/* Review-phase annotations. Delete at launch. */
+mark.pending {
+  background: var(--note-bg); color: var(--note);
+  font-family: $font-sans; font-size: 0.75rem;
+  padding: 0.1rem 0.4rem; border-radius: 3px; white-space: nowrap;
+}
+.wf-note {
+  border-left: 3px solid var(--note);
+  background: var(--note-bg); color: var(--note);
+  font-family: $font-sans; font-size: 0.85rem;
+  padding: 0.6rem 0.9rem; margin: 1.2rem 0;
+}
