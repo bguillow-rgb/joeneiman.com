@@ -47,8 +47,8 @@ export default defineNuxtPlugin((nuxtApp) => {
         io.unobserve(entry.target);
       }
     },
-    // Start once the block is ~12% into the viewport from the bottom
-    { rootMargin: '0px 0px -12% 0px', threshold: 0.05 },
+    // Start once the block is ~6% into the viewport from the bottom
+    { rootMargin: '0px 0px -6% 0px', threshold: 0.05 },
   );
 
   function arm(el, delay = 0, trigger = null) {
