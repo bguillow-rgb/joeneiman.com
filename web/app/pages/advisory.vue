@@ -29,8 +29,8 @@ const roles = [
       title="Advisory"
       image="/assets/photos/joe-plane.jpg"
       alt="Joe Neiman walking across the ramp toward his TBM"
-      width="2528"
-      height="1684"
+      width="2400"
+      height="1598"
       position="center 35%"
       focus="66.667%"
     >

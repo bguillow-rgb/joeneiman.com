@@ -57,6 +57,9 @@ Analytics IDs come from env vars at build time: `NUXT_PUBLIC_GA4_ID`, `NUXT_PUBL
 
 ## Launch checklist
 
-1. Set `launched: true` in `web/app/utils/site.js` (drops the `noindex` tag, enables Open Graph tags and schema, fills the sitemap).
-2. In `.github/workflows/deploy.yml`, set `PREVIEW` to `""` so the build uses the root base path and `https://joeneiman.com`.
-3. Point DNS at GitHub Pages, add the custom domain in Settings > Pages, enforce HTTPS.
+1. Wire the forms. `ContactForm.vue` and `NewsletterForm.vue` both mock their submit (see the `TODO` in each `onSubmit`): they show the success state and discard the input. Until a backend is connected, nothing sent through them is received.
+2. Set `launched: true` in `web/app/utils/site.js`. This drops the `noindex` tag, fills the sitemap, and turns on the Person and WebSite schema. Open Graph and Twitter card tags are always on, with a 1200x630 image per page under `web/public/assets/og/`.
+3. In `.github/workflows/deploy.yml`, set `PREVIEW` to `""` so the build uses the root base path and `https://joeneiman.com`.
+4. Put the custom domain in place: copy `CNAME.launch` to `web/public/CNAME`, point DNS at GitHub Pages, add the domain in Settings > Pages, enforce HTTPS.
+5. Optional: set `NUXT_PUBLIC_GA4_ID` and `NUXT_PUBLIC_GSC_VERIFICATION` in the build environment to turn on analytics and Search Console verification. Empty values keep both off.
+6. Share a page URL in Slack or iMessage to confirm the link preview card shows up.
