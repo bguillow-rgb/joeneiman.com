@@ -11,6 +11,7 @@ const url = useUrl();
 <template>
   <div>
     <PageHero
+      eyebrow="Causes"
       title="Giving"
       image="/assets/photos/fbo-sunset-wide.jpg"
       alt="Jets on the ramp at an FBO under a red sunset"
@@ -18,8 +19,8 @@ const url = useUrl();
       height="2000"
       position="center 62%"
     >
-      Two places my money and my flying go. Merici, which is dismantling child
-      trafficking and giving those kids a second chance, and SkyHope, where the
+      Two places my money and my flying go. <b>Merici</b>, which is dismantling child
+      trafficking and giving those kids a second chance, and <b>SkyHope</b>, where the
       plane and the ratings get patients where they need to be at no cost to them.
       Neither one is complicated. Both are the best use of what I've got.
     </PageHero>

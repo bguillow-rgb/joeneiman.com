@@ -20,7 +20,7 @@ body {
   font-style: normal;
 }
 h1 { @include type('headline-elevated'); }
-h2 { @include type('headline-reduced'); }
+h2 { @include type('section-headline'); }
 h3 { @include type('eyebrow'); }
 h4 { @include type('eyebrow-reduced'); }
 h5, h6 { @include type('tout'); }

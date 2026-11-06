@@ -1,5 +1,5 @@
 <script setup>
-import { SITE, FOOTER_NAV } from '~/utils/site';
+import { SITE } from '~/utils/site';
 
 // Pages opt into the wide measure with definePageMeta({ wide: true }) and
 // into a tucked hero (no top padding on main) with { hero: true }.
@@ -24,12 +24,7 @@ const showCta = computed(() => route.path !== '/contact');
       real story. If it's one of those, I want to hear about it.
     </CtaBand>
 
-    <footer class="site-footer">
-      <p>Joe Neiman</p>
-      <nav>
-        <NuxtLink v-for="item in FOOTER_NAV" :key="item.href" :to="item.href">{{ item.label }}</NuxtLink>
-      </nav>
-    </footer>
+    <SiteFooter />
 
     <AlertStack />
     <SiteAnalytics />

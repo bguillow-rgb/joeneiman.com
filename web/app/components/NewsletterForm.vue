@@ -1,5 +1,5 @@
 <template>
-  <div class="newsletter">
+  <div class="newsletter" v-reveal>
     <AppAlert v-if="sent" theme="success" title="You're on the list.">
       First essay lands in your inbox when it's ready. No noise in between.
     </AppAlert>

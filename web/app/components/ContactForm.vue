@@ -1,5 +1,5 @@
 <template>
-  <div class="form-card">
+  <div class="form-card" v-reveal>
     <AppAlert v-if="sent" theme="success" title="Got it.">
       Thanks, {{ sentName }}. I read everything that comes in here and I'll get back to you if it's a fit.
     </AppAlert>

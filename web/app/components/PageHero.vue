@@ -1,20 +1,22 @@
 <template>
-  <section class="container" :class="{ tuck }">
+  <section class="container" :class="{ tuck, 'has-rule': rule }">
     <div class="hero" :class="[`hero-${size}`, { 'hero-welcome': welcome, 'hero-fade': fade }]">
-      <img
-        class="photo"
-        :src="url(image)"
-        :alt="alt"
-        :width="width || undefined"
-        :height="height || undefined"
-        loading="eager"
-        fetchpriority="high"
-        :style="{ objectPosition: position }"
-      >
+      <div class="photo-wrap">
+        <img
+          class="photo"
+          :src="url(image)"
+          :alt="alt"
+          :width="width || undefined"
+          :height="height || undefined"
+          loading="eager"
+          fetchpriority="high"
+          :style="{ objectPosition: crop }"
+        >
+      </div>
       <div class="dots" :style="{ backgroundImage: `url(${url('/assets/dot-matrix.png')})` }" aria-hidden="true" />
       <div class="shade" aria-hidden="true" />
 
-      <div class="body">
+      <div class="body" v-reveal.children>
         <slot name="top" />
         <p v-if="eyebrow || $slots.eyebrow" class="eyebrow">
           <slot name="eyebrow">{{ eyebrow }}</slot>
@@ -31,10 +33,11 @@
       </div>
     </div>
   </section>
+  <SectionRule v-if="rule" />
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
   title: { type: String, default: '' },
   eyebrow: { type: String, default: '' },
   // Root-relative path under /public, e.g. /assets/photos/cockpit.jpg
@@ -44,6 +47,11 @@ defineProps({
   height: { type: [Number, String], default: '' },
   // CSS object-position for the crop
   position: { type: String, default: 'center 40%' },
+  // A point across the image (e.g. "33.333%") that stays at the hero's
+  // horizontal centre however tall the crop gets, so a subject off to one
+  // side isn't lost on phones. Overrides the horizontal half of `position`;
+  // needs width/height for the image's aspect ratio.
+  focus: { type: String, default: '' },
   // 'lg' | 'sm'
   size: { type: String, default: 'lg' },
   // Home page: the largest headline style
@@ -52,9 +60,26 @@ defineProps({
   tuck: { type: Boolean, default: true },
   // Dissolve the photo into the page background instead of a hard rounded edge
   fade: { type: Boolean, default: true },
+  // Hairline rule under the hero, like every other section break
+  rule: { type: Boolean, default: true },
 });
 
 const url = useUrl();
+
+// object-position maps a point of the image onto the same point of the box,
+// so to hold an image point at the centre we start from 50% and shift by
+// the image's rendered width times (50% - point). The photo wrapper is a
+// size container, so the rendered width is the box height times the image's
+// aspect ratio while the crop is height-bound; the clamp keeps the image
+// covering the box once it is width-bound instead.
+const crop = computed(() => {
+  if (!props.focus) return props.position;
+  const point = parseFloat(props.focus) / 100;
+  const ratio = props.width && props.height ? Number(props.width) / Number(props.height) : 1.5;
+  const shift = (ratio * (0.5 - point)).toFixed(4);
+  const y = props.position.trim().split(/\s+/)[1] || 'center';
+  return `clamp(100%, calc(50% + 100cqh * ${shift}), 0%) ${y}`;
+});
 </script>
 
 <style scoped lang="scss">
@@ -94,6 +119,12 @@ const url = useUrl();
   min-height: clamp(480px, 84vh, 840px);
 }
 
+// The section is a size container, so its margins don't collapse with the
+// rule's; when a rule follows, the rule's margin alone sets the gap
+.has-rule .hero {
+  margin-bottom: 0;
+}
+
 // Faded variant: the photo and texture dissolve into the page background at
 // the bottom edge; the sides and top keep the rounded card edge.
 .hero-fade {
@@ -112,10 +143,17 @@ const url = useUrl();
   }
 }
 
-.photo {
+// The wrapper is a size container so the crop can be expressed in the
+// hero's height (see `focus`)
+.photo-wrap {
   position: absolute;
   inset: 0;
   z-index: -3;
+  container-type: size;
+}
+
+.photo {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -180,8 +218,12 @@ const url = useUrl();
   }
 }
 
+// Same small uppercase label as the section eyebrows further down the page
 .eyebrow {
-  @include type('eyebrow-reduced');
+  @include type('body-reduced');
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   margin: 0 0 0.75rem;
   color: var(--accent);
 }

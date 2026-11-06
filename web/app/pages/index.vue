@@ -1,12 +1,70 @@
 <script setup>
 definePageMeta({ wide: true, hero: true });
 usePage({ title: 'Entrepreneur and Pilot', path: '' });
+const paths = [
+  {
+    to: '/advisory',
+    icon: 'fa-solid fa-comments',
+    title: 'Advisory',
+    text: 'A gut check for founders and dealers. Startup scaling, marketplaces, the used-car business, and general aviation, kept informal.',
+    more: 'How I help',
+  },
+  {
+    to: '/giving',
+    icon: 'fa-solid fa-hand-holding-heart',
+    title: 'Giving',
+    text: 'Merici, which is dismantling child trafficking, and SkyHope, where the plane gets patients where they need to be at no cost to them.',
+    more: 'Where it goes',
+  },
+  {
+    to: '/speaking',
+    icon: 'fa-solid fa-microphone-lines',
+    title: 'Speaking',
+    text: 'A few rooms a year, for audiences who want real stories from somebody who has actually been through it.',
+    more: 'Book a talk',
+  },
+  {
+    to: '/writing',
+    icon: 'fa-solid fa-pen-nib',
+    title: 'Writing',
+    text: 'One substantial essay at a time: decisions, deals, and lessons from the auction business and the hangar, on the way to a book.',
+    more: 'Read the essays',
+  },
+];
+
 const url = useUrl();
+
+const ventures = [
+  {
+    to: '/ventures',
+    image: '/assets/photos/joe-neiman-acv-43n-win.jpg',
+    alt: 'The ACV founders on stage with the 43North trophy, fists raised',
+    position: 'center 30%',
+    title: 'ACV Auctions',
+    text: 'Co-founder. Online wholesale auto auctions, Buffalo, NY. From 50 cars a month to 50,000+, through a 2021 Nasdaq IPO at a valuation over $5 billion.',
+  },
+  {
+    to: '/ventures',
+    image: '/assets/photos/nada-cars-commerce.jpg',
+    alt: 'Joe Neiman and the team at the NADA Show announcement that DealerClub is now part of Cars Commerce',
+    title: 'DealerClub',
+    text: 'Founder. The reputation-based wholesale auction. Self-funded, built with the team behind it, acquired by Cars Commerce.',
+  },
+  {
+    to: '/about',
+    image: '/assets/photos/in-demand-auto.jpg',
+    alt: 'The In Demand Auto showroom: a black Ferrari, a red Mustang convertible and the Carfax fox',
+    position: 'center 45%',
+    title: 'In Demand Auto',
+    text: 'Where it started. A used car dealership in Albany that sold 40+ cars a month, largely on eBay, years before online car sales were normal.',
+  },
+];
 </script>
 
 <template>
   <div>
     <PageHero
+      eyebrow="Entrepreneur"
       welcome
       title="Joe Neiman"
       image="/assets/photos/joe-neiman.jpg"
@@ -21,92 +79,53 @@ const url = useUrl();
       or realistic, <b>trying hard</b>, and plenty of luck along the way.
     </PageHero>
 
-    <StickySection eyebrow="Ventures" title="What I've built">
-      <template #copy>
-        <p>
-          I started buying and selling cars in my parents' driveway at 15 years old.
-          That turned into a dealership, then into co-founding ACV Auctions, and later
-          founding DealerClub. These days I fly, I look for good deals, I support causes
-          I believe in, and I'm working on turning two decades of lessons into a book.
-        </p>
-      </template>
-      <template #actions>
-        <NuxtLink class="btn btn-primary" to="/ventures">See the ventures</NuxtLink>
-      </template>
+    <TileGallery eyebrow="Ventures" title="What I've built" :items="ventures">
+      <p>
+        I started buying and selling cars in my parents' driveway at 15 years old.
+        That turned into a dealership, then into co-founding <b>ACV Auctions</b>, and later
+        founding <b>DealerClub</b>. These days I fly, I look for good deals, I support causes
+        I believe in, and I'm working on turning two decades of lessons into a book.
+      </p>
+    </TileGallery>
 
-      <FeatureCard
-        to="/ventures"
-        image="/assets/photos/ipo-day-nasdaq.jpg"
-        alt="Joe Neiman at the Nasdaq podium on ACV's IPO day"
-        position="center 20%"
-        eyebrow="Co-founder"
-        title="ACV Auctions"
-      >
-        Online wholesale auto auctions, Buffalo, NY. From 50 cars a month to 50,000+,
-        through a 2021 Nasdaq IPO at a valuation over $5 billion.
-      </FeatureCard>
-
-      <FeatureCard
-        to="/ventures"
-        image="/assets/photos/nada-cars-commerce.jpg"
-        alt="Joe Neiman and the team at the NADA Show announcement that DealerClub is now part of Cars Commerce"
-        eyebrow="Founder"
-        title="DealerClub"
-      >
-        The reputation-based wholesale auction. Self-funded, built with the team behind
-        it, acquired by Cars Commerce.
-      </FeatureCard>
-
-      <FeatureCard
-        to="/about"
-        image="/assets/photos/joe-porsche-wide.jpg"
-        alt="Joe Neiman standing beside a white air-cooled Porsche 911"
-        eyebrow="Where it started"
-        title="In Demand Auto"
-        link-text="The story"
-      >
-        A used car dealership in Albany that sold 40+ cars a month, largely on eBay,
-        years before online car sales were normal.
-      </FeatureCard>
-    </StickySection>
+    <SectionRule />
 
     <div class="page-body">
-    <div class="split">
-      <div>
+    <div class="row g-4 g-lg-5 align-items-center looking">
+      <div class="col-12 col-lg-6">
+        <p class="upper-tag">Buying now</p>
         <h2>What I'm looking for</h2>
         <p>
-          I'm building a portfolio of franchise car dealerships because I believe in the
+          I'm building a portfolio of <b>franchise car dealerships</b> because I believe in the
           resiliency of the US auto industry and the cultural stronghold that automobiles
-          hold. I buy and sell airplanes. I'm interested in early stage companies doing
+          hold. I buy and sell airplanes.
+        </p>
+        <p>
+          <b>I'm interested in early stage companies</b> doing
           neat things with health and wellness, marketplaces, and transportation, and I
           am always interested in air-cooled Porsches and other specialty cars and trucks.
-          If you've got one of those, <NuxtLink to="/contact">I want to hear about it</NuxtLink>.
+          If you've got one of those, <b>I want to hear about it</b>.
         </p>
         <NuxtLink class="cta" to="/contact">Bring me a deal</NuxtLink>
       </div>
-      <figure>
-        <img :src="url('/assets/photos/joe-porsche-wide.jpg')" alt="Joe Neiman standing beside a white air-cooled Porsche 911" width="1800" height="1200" loading="lazy">
-      </figure>
+      <div class="col-12 col-lg-6 order-first order-lg-last">
+        <div class="bento">
+          <img class="tall" :src="url('/assets/photos/joe-porsche-wide.jpg')" alt="Joe Neiman standing beside a white air-cooled Porsche 911" loading="lazy">
+          <img :src="url('/assets/photos/waco.jpg')" alt="Red Waco YMF-5 biplane in a hangar" loading="lazy">
+          <img :src="url('/assets/photos/tbm-door.jpg')" alt="Joe Neiman giving a thumbs-up from the open door of his TBM" loading="lazy">
+        </div>
+      </div>
     </div>
 
     </div>
 
-    <section class="container">
-      <figure class="photo-band">
-        <img :src="url('/assets/photos/wing-sunset.jpg')" alt="Sunset over the wing at altitude" width="1800" height="1350" loading="lazy">
-      </figure>
-    </section>
+    <SectionRule />
 
-    <div class="page-body">
-    <div class="band" style="border-top: 0; margin-top: 0;">
-      <h2>Around here</h2>
-      <ul class="card-grid">
-        <li><NuxtLink to="/about"><span class="card-title">The story</span><span class="card-sub">The $35 Honda Civic, the dealership, ACV, DealerClub, and the health battle that ran underneath all of it.</span></NuxtLink></li>
-        <li><NuxtLink to="/giving"><span class="card-title">Giving</span><span class="card-sub">Where the money and the flying go.</span></NuxtLink></li>
-        <li><NuxtLink to="/speaking"><span class="card-title">Speaking</span><span class="card-sub">The handful of talks I say yes to.</span></NuxtLink></li>
-        <li><NuxtLink to="/writing"><span class="card-title">Writing</span><span class="card-sub">Essays on the way, and eventually the book.</span></NuxtLink></li>
-      </ul>
-    </div>
-    </div>
+    <PathGrid eyebrow="Beyond the deals" title="Where the rest of my time goes" :items="paths">
+      <p>
+        Dealerships and airplanes are the day to day. The rest goes to founders who
+        want a gut check, causes I care about, a few stages a year, and the essays and book I'm working on.
+      </p>
+    </PathGrid>
   </div>
 </template>

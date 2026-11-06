@@ -1,6 +1,6 @@
 <template>
   <section class="container band-wrap">
-    <div class="band">
+    <div class="band" v-reveal>
       <div class="container contained position-relative">
         <p v-if="eyebrow || $slots.eyebrow" class="eyebrow">
           <slot name="eyebrow">{{ eyebrow }}</slot>

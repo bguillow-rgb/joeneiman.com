@@ -5,7 +5,7 @@
       <div class="dots" :style="{ backgroundImage: `url(${url('/assets/dot-matrix.png')})` }" aria-hidden="true" />
       <div class="shade" aria-hidden="true" />
 
-      <div class="body">
+      <div class="body" v-reveal.children>
         <p class="upper-tag">{{ eyebrow }}</p>
         <h2 class="title">{{ title }}</h2>
         <p class="copy"><slot /></p>
@@ -61,20 +61,22 @@ const url = useUrl();
   border-radius: 0;
 }
 
+// Dots sit above the gradient here, since the band's shade is heavy enough
+// to hide them otherwise
 .dots {
   position: absolute;
   inset: 0;
-  z-index: -2;
+  z-index: -1;
   background-repeat: repeat;
   background-position: center;
   background-size: 10px 10px;
-  opacity: 0.3;
+  opacity: 0.5;
 }
 
 .shade {
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: -2;
   background: linear-gradient(to right, rgba(10, 11, 13, 0.92) 0%, rgba(10, 11, 13, 0.7) 55%, rgba(10, 11, 13, 0.35) 100%);
 }
 

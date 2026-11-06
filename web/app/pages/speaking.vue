@@ -11,12 +11,14 @@ const url = useUrl();
 <template>
   <div>
     <PageHero
+      eyebrow="Talks"
       title="Speaking"
-      image="/assets/photos/waco.jpg"
-      alt="Red Waco YMF-5 biplane in a hangar"
-      width="1600"
-      height="1200"
-      position="center 50%"
+      image="/assets/photos/joe-neiman-speaking.jpg"
+      alt="Joe Neiman in conversation on stage, seated in front of a Carfax banner"
+      width="2592"
+      height="1632"
+      position="center 40%"
+      focus="33.333%"
     >
       I say yes to a few rooms a year, where the audience wants real stories from
       somebody who has actually been through it, and where my time does some good.

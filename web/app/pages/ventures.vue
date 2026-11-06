@@ -11,12 +11,14 @@ const url = useUrl();
 <template>
   <div>
     <PageHero
+      eyebrow="Built and Sold"
       title="Ventures"
       image="/assets/photos/joe-neiman-acv-43n-win.jpg"
       alt="The ACV founders on stage with the 43North trophy, fists raised"
       width="3000"
       height="2000"
       position="center 30%"
+      focus="33.333%"
     >
       Every one of these started the same way: a car I thought I could sell for
       more than I paid. The driveway turned into a dealership, the dealership

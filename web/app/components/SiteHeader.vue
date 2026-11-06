@@ -1,6 +1,6 @@
 <template>
   <FloatingBar>
-    <NuxtLink class="navbar-brand" to="/" :title="SITE.name" :aria-label="`${SITE.name}, home`">JN<span class="dot">.</span><span class="visually-hidden"> {{ SITE.name }}</span></NuxtLink>
+    <BrandMark class="navbar-brand" />
 
     <button
       class="navbar-toggler border-0"
@@ -15,7 +15,7 @@
 
     <div id="siteMenu" class="offcanvas offcanvas-end" tabindex="-1" aria-labelledby="siteMenuLabel">
       <div class="offcanvas-header border-bottom">
-        <NuxtLink id="siteMenuLabel" class="navbar-brand offcanvas-title" to="/" :title="SITE.name" :aria-label="`${SITE.name}, home`">JN<span class="dot">.</span><span class="visually-hidden"> {{ SITE.name }}</span></NuxtLink>
+        <BrandMark id="siteMenuLabel" class="navbar-brand offcanvas-title" />
         <button
           type="button"
           class="drawer-close"

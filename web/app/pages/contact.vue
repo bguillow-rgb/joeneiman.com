@@ -11,6 +11,7 @@ const url = useUrl();
 <template>
   <div>
     <PageHero
+      eyebrow="Get in touch"
       title="Contact"
       image="/assets/photos/flying-headset.jpg"
       alt="Joe Neiman at altitude, headset on"

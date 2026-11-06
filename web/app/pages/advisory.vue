@@ -11,6 +11,7 @@ const url = useUrl();
 <template>
   <div>
     <PageHero
+      eyebrow="Mentoring"
       title="Advisory"
       image="/assets/photos/joe-porsche-lean.jpg"
       alt="Joe Neiman leaning on a white Porsche 911 with blue stripes"

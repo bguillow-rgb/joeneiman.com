@@ -36,6 +36,9 @@ watch(
   padding: $header-gap $header-inset 0;
   z-index: 1045;
   container-type: inline-size;
+  // Own compositor layer without a transform (a transform here would trap the
+  // fixed-position drawer), so the sticky header doesn't repaint on scroll
+  backface-visibility: hidden;
 }
 
 .bar {
@@ -54,6 +57,10 @@ watch(
   );
   border-radius: $bar-radius;
 
+  // The fill and blur live on a pseudo-element rather than the bar, so the
+  // filter can't make the bar the containing block for the fixed-position
+  // drawer inside it. The blur radius is kept small: the cost of a backdrop
+  // blur on scroll scales with its radius.
   &::before {
     content: '';
     position: absolute;
@@ -61,9 +68,11 @@ watch(
     z-index: -1;
     border-radius: inherit;
     background: $bar-bg;
-    -webkit-backdrop-filter: blur(24px);
-    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur($bar-blur);
+    backdrop-filter: blur($bar-blur);
     box-shadow: $bar-shadow;
+    will-change: transform;
+    transform: translateZ(0);
   }
 
   // The base stylesheet gives every li a bottom margin; nav items get none
@@ -74,31 +83,13 @@ watch(
   // The brand is a two-letter mark, set extra bold. The box is exactly one
   // 24px line so the bar centers it; the larger period sits on the same
   // baseline with a zero line-height, so it adds nothing to the box.
+  // The wordmark itself is BrandMark.vue; this only places it in the bar
   :deep(.navbar-brand) {
-    display: block;
-    height: 24px;
-    font-family: $font-display;
-    font-size: 24px;
-    font-weight: 800;
-    line-height: 24px;
-    letter-spacing: -0.04em;
     padding: 0;
     margin-right: 20px;
-    color: #fff;
-    text-decoration: none;
-    white-space: nowrap;
     // Caps sit high in a line box (descender space below); nudge to optical center
     position: relative;
     top: 1px;
-
-    &:hover { color: #fff; }
-
-    .dot {
-      color: var(--bs-primary);
-      font-size: 30px;
-      line-height: 0;
-      vertical-align: baseline;
-    }
   }
 
   // Links and buttons in the bar share one size: 14px on a 28px line, 40px tall
@@ -292,7 +283,7 @@ watch(
   }
 
   .bar :deep(.nav-item) {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid $hairline;
   }
 
   .bar :deep(.nav-link) {
@@ -317,7 +308,7 @@ watch(
     gap: 10px;
     margin: auto -30px 0;
     padding: 20px 30px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid $hairline;
 
     .btn {
       display: block;

@@ -45,9 +45,16 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'apple-mobile-web-app-title', content: 'Joe Neiman' },
+        { name: 'theme-color', content: '#0a0b0d' },
       ],
       link: [
-        { rel: 'icon', href: `${baseURL}favicon.svg`, type: 'image/svg+xml' },
+        // Icons live under /icons; the manifest's own paths are relative to it
+        { rel: 'icon', type: 'image/png', href: `${baseURL}icons/favicon-96x96.png`, sizes: '96x96' },
+        { rel: 'icon', type: 'image/svg+xml', href: `${baseURL}icons/favicon.svg` },
+        { rel: 'shortcut icon', href: `${baseURL}icons/favicon.ico` },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: `${baseURL}icons/apple-touch-icon.png` },
+        { rel: 'manifest', href: `${baseURL}icons/site.webmanifest` },
       ],
       script: [
         // Font Awesome kit for this site.

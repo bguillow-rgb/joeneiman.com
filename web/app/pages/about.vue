@@ -11,12 +11,13 @@ const url = useUrl();
 <template>
   <div>
     <PageHero
+      eyebrow="The story"
       title="About"
       image="/assets/photos/joe-neiman-flying.jpg"
       alt="Joe Neiman in the cockpit of his TBM at sunset, headset on"
       width="3000"
       height="2000"
-      position="center 35%"
+      position="66.667% 35%"
     >
       I grew up outside Albany, New York, in a town nobody has heard of. I learned
       the value of <b>hard work</b> early on through a combination of manual labor as a
@@ -45,6 +46,8 @@ const url = useUrl();
 
     </div>
 
+    <SectionRule />
+
     <GraySection eyebrow="In Demand Auto">
       <div class="row g-4 g-lg-5 align-items-center">
         <div class="col-12 col-lg-8">
@@ -63,6 +66,8 @@ const url = useUrl();
         </div>
       </div>
     </GraySection>
+
+    <SectionRule />
 
     <div class="page-body">
     <h2>ACV Auctions</h2>
@@ -145,11 +150,6 @@ const url = useUrl();
       but you're still stuck driving from one traffic light to the next.
     </p>
 
-    <h2>What I read</h2>
-    <p>
-      I've read hundreds of books in my adult life. I try to be a student of lives
-      well lived, and try to apply the lessons learned to my life.
-    </p>
     </div>
   </div>
 </template>

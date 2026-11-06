@@ -2,7 +2,7 @@
   <section class="container contained sticky-section">
     <div class="row">
       <div class="col-12 col-lg-4">
-        <div class="sticky-copy">
+        <div class="sticky-copy" v-reveal.children>
           <p v-if="eyebrow || $slots.eyebrow" class="upper-tag">
             <slot name="eyebrow">{{ eyebrow }}</slot>
           </p>
@@ -53,6 +53,9 @@ defineProps({
     top: $header-bar-height + $header-settle + 40px;
     margin-bottom: 20px;
     padding-right: 30px;
+    // Own layer: a sticky block under a blurred sticky header is otherwise
+    // re-rasterized on every scroll frame
+    will-change: transform;
   }
 
   h2 {

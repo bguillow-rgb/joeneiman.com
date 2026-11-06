@@ -41,11 +41,15 @@ const url = useUrl();
   border-radius: $radius-tile;
   color: var(--fg);
   text-decoration: none;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 1px $hairline;
   transition:
     box-shadow 0.4s cubic-bezier(0.19, 1, 0.22, 1),
     transform 0.4s cubic-bezier(0.19, 1, 0.22, 1),
     background-color 0.15s ease;
+  // Keep a stable compositor layer: the hover transform otherwise creates and
+  // destroys one as the blurred header scrolls past, which flickers
+  will-change: transform;
+  backface-visibility: hidden;
 
   &:hover {
     color: var(--fg);

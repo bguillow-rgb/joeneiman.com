@@ -11,6 +11,7 @@ const url = useUrl();
 <template>
   <div>
     <PageHero
+      eyebrow="Essays"
       title="Writing"
       image="/assets/photos/joe-neiman-skiing.jpg"
       alt="Joe Neiman in backcountry ski gear on a mountain ridge"
