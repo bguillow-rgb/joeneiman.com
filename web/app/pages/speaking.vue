@@ -1,5 +1,5 @@
 <script setup>
-definePageMeta({ wide: true });
+definePageMeta({ wide: true, hero: true });
 usePage({
   title: 'Speaking',
   path: '/speaking',
@@ -10,13 +10,19 @@ const url = useUrl();
 
 <template>
   <div>
-    <h1>Speaking</h1>
-
-    <p class="lede">
+    <PageHero
+      title="Speaking"
+      image="/assets/photos/waco.jpg"
+      alt="Red Waco YMF-5 biplane in a hangar"
+      width="1600"
+      height="1200"
+      position="center 50%"
+    >
       I say yes to a few rooms a year, where the audience wants real stories from
       somebody who has actually been through it, and where my time does some good.
-    </p>
+    </PageHero>
 
+    <div class="page-body">
     <div class="split">
       <div>
         <h2>What I talk about</h2>
@@ -43,6 +49,7 @@ const url = useUrl();
       <figure>
         <img :src="url('/assets/photos/studio-set.jpg')" alt="Joe Neiman on a video set before a recording" width="1600" height="1200" loading="lazy">
       </figure>
+    </div>
     </div>
   </div>
 </template>

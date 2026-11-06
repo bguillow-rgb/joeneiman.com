@@ -1,0 +1,102 @@
+/* Form chrome on the dark theme. Sizes and colors mostly come from the
+   Bootstrap variables in _constants.scss; this covers what variables can't. */
+
+.form-label {
+  @include type('body-reduced');
+  font-weight: 600;
+  color: var(--fg);
+  margin-bottom: 0.5rem;
+}
+
+.form-control,
+.form-select {
+  @include type('body');
+  color-scheme: dark;
+
+  &:disabled,
+  &[readonly] {
+    background-color: $surface;
+    color: $muted;
+    opacity: 1;
+  }
+}
+
+select.form-select option {
+  background: $bg-alt;
+  color: $fg;
+}
+
+.form-text {
+  @include type('body-reduced');
+  color: var(--muted);
+}
+
+.invalid-feedback {
+  @include type('body-reduced');
+  margin-top: 0.4rem;
+}
+
+.input-group-text {
+  color: var(--muted);
+}
+
+.form-floating > label {
+  color: var(--muted);
+}
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label,
+.form-floating > .form-select ~ label {
+  color: var(--muted);
+}
+.form-floating > .form-control:focus ~ label::after,
+.form-floating > .form-control:not(:placeholder-shown) ~ label::after,
+.form-floating > .form-select ~ label::after {
+  background-color: $input-bg;
+}
+
+.form-check-input {
+  cursor: pointer;
+}
+.form-check-label {
+  cursor: pointer;
+}
+.form-switch .form-check-input:not(:checked) {
+  --bs-form-switch-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$muted}'/></svg>"))};
+}
+
+.form-range::-webkit-slider-runnable-track { background: $surface; }
+.form-range::-moz-range-track { background: $surface; }
+
+.alert {
+  --bs-alert-border-radius: #{$radius-tile};
+  --bs-alert-padding-y: 1rem;
+  --bs-alert-padding-x: 1.25rem;
+  color: var(--fg);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+
+  .alert-link { color: inherit; font-weight: 600; }
+}
+.alert-primary { background: rgba($button, 0.18); border-color: rgba($accent, 0.4); }
+.alert-success { background: rgba(48, 209, 88, 0.14); border-color: rgba(48, 209, 88, 0.4); i { color: $success; } }
+.alert-danger  { background: rgba(255, 69, 58, 0.14); border-color: rgba(255, 69, 58, 0.45); i { color: $danger; } }
+.alert-warning { background: rgba(255, 159, 10, 0.14); border-color: rgba(255, 159, 10, 0.45); i { color: $warning; } }
+.alert-info    { background: rgba(100, 210, 255, 0.14); border-color: rgba(100, 210, 255, 0.4); i { color: $info; } }
+.alert-secondary, .alert-dark, .alert-light { background: $bg-alt; border-color: $line; }
+
+.btn-outline-primary {
+  --bs-btn-color: #{$fg};
+  --bs-btn-border-color: #{$line};
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #{$surface};
+  --bs-btn-hover-border-color: rgba(255, 255, 255, 0.3);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--bs-primary);
+  --bs-btn-active-border-color: var(--bs-primary);
+}
+.btn-primary {
+  --bs-btn-hover-bg: #{$button-hover};
+  --bs-btn-hover-border-color: #{$button-hover};
+  --bs-btn-active-bg: #{$button-active};
+  --bs-btn-active-border-color: #{$button-active};
+}

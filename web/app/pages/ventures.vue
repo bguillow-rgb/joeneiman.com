@@ -1,5 +1,5 @@
 <script setup>
-definePageMeta({ wide: true });
+definePageMeta({ wide: true, hero: true });
 usePage({
   title: 'Ventures',
   path: '/ventures',
@@ -10,11 +10,21 @@ const url = useUrl();
 
 <template>
   <div>
-    <div class="hero-full page-hero full-bleed">
-      <img :src="url('/assets/photos/avanti.jpg')" alt="Piaggio Avanti P180 in a hangar" width="1600" height="1200" loading="eager">
-      <div class="hero-overlay"><h1>Ventures</h1></div>
-    </div>
+    <PageHero
+      title="Ventures"
+      image="/assets/photos/joe-neiman-acv-43n-win.jpg"
+      alt="The ACV founders on stage with the 43North trophy, fists raised"
+      width="3000"
+      height="2000"
+      position="center 30%"
+    >
+      Every one of these started the same way: a car I thought I could sell for
+      more than I paid. The driveway turned into a dealership, the dealership
+      turned into ACV, and ACV turned into a habit of building things. These days
+      I'm mostly buying instead of building, and I'm still looking.
+    </PageHero>
 
+    <div class="page-body">
     <h2>Built</h2>
     <ul>
       <li><strong>ACV Auctions</strong>, co-founder. Online wholesale auto auctions, Buffalo, NY. From 50 cars a month to 50,000+, through a 2021 Nasdaq IPO at a valuation over $5 billion.</li>
@@ -42,6 +52,7 @@ const url = useUrl();
       <figure>
         <img :src="url('/assets/photos/cessna-ttx.jpg')" alt="Joe Neiman on the ramp with a Cessna TTx" width="1200" height="1600" loading="lazy">
       </figure>
+    </div>
     </div>
   </div>
 </template>

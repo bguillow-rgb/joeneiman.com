@@ -4,39 +4,314 @@
 //
 // Bootstrap reads the $-variables that share its names ($body-bg,
 // $font-family-base, ...) when main.scss imports it after this file.
+//
+// Dark theme: a cool near-black page with raised graphite sections, soft
+// white text, deep blue links and buttons, orange badge accents.
 
-// Palette (light). Dark values live in the :root media query in _base.scss.
-$bg: #fafaf8;
-$fg: #1b1d22;
-$muted: #6b6f78;
-$line: #e2e1dc;
-$note: #8a6d1f;
-$note-bg: #faf3dc;
+// ---------------------------------------------------------------------------
+// Palette (dark only; the site does not switch on prefers-color-scheme)
+// ---------------------------------------------------------------------------
+// Graphite: near-black with a faint cool cast that runs through every grey.
+$black: #0a0b0d;          // page background
+$bg: $black;
+$bg-alt: #151719;         // alternate sections, cards, footer
+$bg-nav: #121417;         // drawer header
+$surface: #1f2226;        // raised surface / card hover
+$surface-high: #2a2e34;
 
-$bg-dark: #121417;
-$fg-dark: #ecebe6;
-$muted-dark: #9a9ea6;
-$line-dark: #2a2d33;
-$note-dark: #d8b44a;
-$note-bg-dark: #2e2812;
+$fg: #f0f2f4;             // primary text
+$fg-soft: rgba(240, 242, 244, 0.8);   // nav links, hero copy
+$muted: #8a9099;          // secondary text, captions
+$muted-deep: #6f7580;
+$line: #2b2f35;           // dividers, borders
+$line-soft: rgba(43, 47, 53, 0.72);
 
-// Type
-$font-serif: Georgia, 'Times New Roman', serif;
-$font-sans: system-ui, sans-serif;
+$accent: #3d7bff;         // links on dark
+$accent-hover: #6b9dff;
+$button: #1a4fd6;         // primary button, a deep royal blue
+$button-hover: #1744bd;
+$button-active: #143ca6;
+$blue-tint: rgba($accent, 0.3);   // focus rings, selection, subtle fills
 
+$note: #ff791b;           // review-phase badges
+$note-bg: rgba(245, 99, 0, 0.2);
+
+// ---------------------------------------------------------------------------
+// Type. Inter Variable, self-hosted from @fontsource-variable/inter (loaded
+// in nuxt.config.js). Behind it, the previous stacks: the system font on
+// Mac, iPhone and iPad, then Helvetica Neue / Helvetica / Arial.
+// ---------------------------------------------------------------------------
+$font-display: 'Inter Variable', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Icons', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-text: 'Inter Variable', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-sans: $font-text;
+$font-serif: $font-text;  // legacy alias; the serif stack is gone
+
+$font-size-root: 106.25%;            // html at 17px, so 1rem = 17px
+$font-size-body: 17px;
+$line-height-body: 1.4705882353;
+$tracking-headline: -0.03em;
+$tracking-text: -0.012em;
+
+// Responsive breakpoints for type.
+$bp-medium: 1068px;
+$bp-small: 734px;
+
+// Type scale. Each entry is (desktop, <=1068px, <=734px); each step is
+// (font-size, line-height, letter-spacing, font-weight, display|text).
+// _typography.scss turns these into mixins and `.typography-*` classes.
+// Tracking is tuned for Inter, which runs wide at display sizes: tighter the
+// larger the type, easing to neutral by 12px.
+$type-scale: (
+  'welcome-headline':   ((80px, 1.05, -0.035em, 700, display), (64px, 1.0625, -0.03em, 700, display), (40px, 1.1, -0.024em, 700, display)),
+  'headline-elevated':  ((64px, 1.0625, -0.03em, 700, display), (48px, 1.0834933333, -0.026em, 700, display), (40px, 1.1, -0.024em, 700, display)),
+  'section-headline':   ((56px, 1.0714285714, -0.028em, 700, display), (48px, 1.0834933333, -0.026em, 700, display), (28px, 1.1428571429, -0.02em, 700, display)),
+  'headline':           ((48px, 1.0834933333, -0.026em, 700, display), (40px, 1.1, -0.024em, 700, display), (32px, 1.125, -0.022em, 700, display)),
+  'headline-reduced':   ((40px, 1.1, -0.024em, 700, display), (32px, 1.125, -0.022em, 700, display), (28px, 1.1428571429, -0.02em, 700, display)),
+  'banner-headline':    ((32px, 1.125, -0.022em, 700, display), (24px, 1.1666666667, -0.018em, 700, display), (21px, 1.1904761905, -0.016em, 700, display)),
+  'eyebrow-elevated':   ((28px, 1.1428571429, -0.02em, 700, display), (24px, 1.1666666667, -0.018em, 700, display), (21px, 1.1904761905, -0.016em, 700, display)),
+  'eyebrow':            ((24px, 1.1666666667, -0.018em, 700, display), (21px, 1.1904761905, -0.016em, 700, display), (24px, 1.1666666667, -0.018em, 700, display)),
+  'eyebrow-reduced':    ((21px, 1.1904761905, -0.016em, 700, display), (21px, 1.1904761905, -0.016em, 700, display), (19px, 1.2105263158, -0.014em, 700, display)),
+  'label':              ((24px, 1.1666666667, -0.018em, 700, display), (21px, 1.1904761905, -0.016em, 700, display), (24px, 1.1666666667, -0.018em, 700, display)),
+  'tout':               ((19px, 1.2105263158, -0.014em, 700, display), (19px, 1.2105263158, -0.014em, 700, display), (19px, 1.2105263158, -0.014em, 700, display)),
+  'intro-elevated':     ((28px, 1.1428571429, -0.02em, 400, display), (24px, 1.1666666667, -0.018em, 400, display), (21px, 1.1904761905, -0.016em, 400, display)),
+  'intro':              ((21px, 1.381002381, -0.016em, 400, display), (21px, 1.381002381, -0.016em, 400, display), (19px, 1.4211026316, -0.014em, 400, display)),
+  'welcome-body':       ((21px, 1.1904761905, -0.016em, 600, display), (19px, 1.2105263158, -0.014em, 600, display), (17px, 1.2353641176, -0.012em, 600, text)),
+  'body':               ((17px, 1.4705882353, -0.012em, 400, text), (17px, 1.4705882353, -0.012em, 400, text), (17px, 1.4705882353, -0.012em, 400, text)),
+  'body-tight':         ((17px, 1.2353641176, -0.012em, 400, text), (17px, 1.2353641176, -0.012em, 400, text), (17px, 1.2353641176, -0.012em, 400, text)),
+  'body-reduced':       ((14px, 1.4285914286, -0.006em, 400, text), (14px, 1.4285914286, -0.006em, 400, text), (14px, 1.4285914286, -0.006em, 400, text)),
+  'caption-tile':       ((17px, 1.2353641176, -0.012em, 600, text), (17px, 1.2353641176, -0.012em, 600, text), (14px, 1.4285914286, -0.006em, 600, text)),
+  'caption':            ((12px, 1.3333733333, 0em, 400, text), (12px, 1.3333733333, 0em, 400, text), (12px, 1.3333733333, 0em, 400, text)),
+  'button':             ((17px, 1.1764805882, -0.012em, 400, text), (17px, 1.1764805882, -0.012em, 400, text), (17px, 1.1764805882, -0.012em, 400, text)),
+  'nav':                ((12px, 1, 0em, 400, text), (12px, 1, 0em, 400, text), (12px, 1, 0em, 400, text)),
+);
+
+// Rhythm: space after a headline before its first element, and between a
+// paragraph and the element that follows.
+$headline-plus-first-element-margin: 1em;
+$paragraph-plus-element-margin: 0.8em;
+
+// type('headline') applies one entry of $type-scale with its breakpoints.
+// Lives here (not in _typography.scss) so component <style> blocks get it.
+@function type-family($key) {
+  @if $key == display { @return $font-display; }
+  @return $font-text;
+}
+
+@mixin type-step($step) {
+  font-size: nth($step, 1);
+  line-height: nth($step, 2);
+  letter-spacing: nth($step, 3);
+  font-weight: nth($step, 4);
+  font-family: type-family(nth($step, 5));
+}
+
+@mixin type($name) {
+  $steps: map-get($type-scale, $name);
+  @if $steps == null {
+    @error "Unknown type style `#{$name}`. See $type-scale in _constants.scss.";
+  }
+  @include type-step(nth($steps, 1));
+  @if nth($steps, 2) != nth($steps, 1) {
+    @media (max-width: $bp-medium) { @include type-step(nth($steps, 2)); }
+  }
+  @if nth($steps, 3) != nth($steps, 2) {
+    @media (max-width: $bp-small) { @include type-step(nth($steps, 3)); }
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Layout
+// ---------------------------------------------------------------------------
 $measure: 56rem;
-$measure-wide: 86rem;
+$container-max-width: 1545px;   // heroes and full-width bands
+$contained-max-width: 1364px;   // everything else
+$measure-wide: $contained-max-width;
 $gutter: max(16px, 4vw);
-$breakpoint-stack: 720px;
+$breakpoint-stack: $bp-small;
+// Corner radii: 12px for surfaces (cards, images, video, hero), 10px for
+// inputs, 6px for buttons and small chips.
+$radius-tile: 12px;
+$radius-image: 12px;
+$radius-hero: 12px;
+$radius-input: 10px;
+$radius-button: 6px;
+$radius-small: 6px;
+$radius-pill: $radius-button;   // legacy alias
 
+// Bootstrap breakpoints, for component media queries.
+$sm-min: 576px;
+$md-min: 768px;
+$lg-min: 992px;
+$xl-min: 1200px;
+$xs-max: ($sm-min - 1);
+$sm-max: ($md-min - 1);
+$md-max: ($lg-min - 1);
+$lg-max: ($xl-min - 1);
+
+// Header: a floating bar that sticks. The bar sits $header-gap below the top
+// of the page; when stuck, $header-settle of that gap stays visible. Heroes
+// pull up by $header-height so the bar floats over the image.
+// Bar geometry lines the bar's contents up with the hero copy and the
+// contained column: (1545 - 1390) / 2 + 25 = (1545 - 1364) / 2 + 12 = 102.5px
+$header-max-width: 1390px;
+$header-inset: 32px;
+$bar-padding-x: 25px;
+$bar-radius: 8px;
+// Vertical rhythm: the hero starts $header-offset below the top of the page
+// and the bar sits $header-gap into it (23 + 25 = 48px to the bar's top).
+$header-bar-height: 60px;
+$header-gap: 25px;
+$header-settle: 18px;
+$header-offset: 23px;
+$header-height: $header-bar-height + $header-gap;
+$header-inset-mobile: 12px;
+$bar-padding-mobile: 12px;              // the clamp floor of the bar's padding
+// Up to this width (just under the xxl container cap) the compact horizontal
+// geometry applies: bar inset 12px, hero full-bleed, all text on the bar's
+// contents at 24px. Above it the 1545px container and 1390px bar take over.
+// The handoff is where the contained column's text edge (centered 1364px
+// plus 12px) first reaches the bar's contents at 32 + 12: 1428px.
+$header-compact-max: $contained-max-width + 2 * $header-inset - 0.02px;
+$header-desktop-min: $contained-max-width + 2 * $header-inset;
+// Up to this width the mobile vertical rhythm applies: 20px gap above the
+// bar, hero starting at the top of the page
+$header-mobile-max: $md-max;
+$header-bar-height-mobile: 60px;
+$header-gap-mobile: 20px;
+$header-settle-mobile: 10px;
+$header-height-mobile: $header-bar-height-mobile + $header-gap-mobile;
+$header-break: $xl-min;                 // nav collapses into the drawer below this
+$header-break-max: $lg-max;
+$nav-font-size: 14px;
+$nav-line-height: 28px;
+$nav-btn-radius: 6px;
+$drawer-width: 320px;
+$drawer-header-height: 80px;
+$bar-bg: rgba(18, 20, 23, 0.9);
+// A hairline ring and a faint, tight cast; the blur does most of the lifting
+$bar-shadow:
+  0 0 0 1px rgba(255, 255, 255, 0.08),
+  0 6px 16px -10px rgba(0, 0, 0, 0.35);
+
+// Full-width bands (gray sections) and their rhythm
+$band-padding: 120px;
+$band-padding-mobile: 60px;
+$band-margin: 90px;
+$band-margin-mobile: 60px;
+
+// Hero copy inset from the rounded edge: the hero is a full container, the
+// copy lines up with the contained width.
+$hero-inset: ($container-max-width - $contained-max-width) * 0.5;
+
+// Bootstrap container: full width until xxl, then capped. The gutter is a
+// fixed 24px (not 1.5rem) so the 12px container padding stays exact with
+// the 17px root font size.
+$grid-gutter-width: 24px;
+$container-max-widths: (
+  xxl: $container-max-width,
+);
+
+// ---------------------------------------------------------------------------
 // Bootstrap overrides
-$font-family-base: $font-serif;
+// ---------------------------------------------------------------------------
+$primary: $button;
+$secondary: $muted;
+$success: #30d158;
+$danger: #ff453a;
+$warning: #ff9f0a;
+$info: #64d2ff;
+$dark: $bg-alt;
+$light: $fg;
+$min-contrast-ratio: 3;        // keeps white text on the blue button
+
 $body-bg: $bg;
 $body-color: $fg;
-$link-color: $fg;
-$link-hover-color: $muted;
+$body-secondary-color: $muted;
+$body-secondary-bg: $bg-alt;
+$body-tertiary-bg: $surface;
+$body-emphasis-color: #ffffff;
+
+$link-color: $accent;
+$link-hover-color: $accent-hover;
+$link-decoration: none;
+$link-hover-decoration: underline;
+
 $border-color: $line;
-$line-height-base: 1.6;
-$headings-font-weight: 400;
+$border-color-translucent: $line-soft;
+
+$font-family-base: $font-text;
+$font-size-base: 1rem;               // = 17px via $font-size-root
+$line-height-base: $line-height-body;
+$headings-font-family: $font-display;
+$headings-font-weight: 700;
+$headings-color: $fg;
+
+$border-radius: $radius-input;
+$border-radius-sm: $radius-small;
+$border-radius-lg: $radius-tile;
+$border-radius-xl: $radius-tile;
+$btn-border-radius: $radius-button;
+$btn-border-radius-sm: $radius-button;
+$btn-border-radius-lg: $radius-button;
+// Buttons and inputs are both 50px tall
+$btn-padding-y: 12px;
+$btn-padding-x: 25px;
+$btn-line-height: 1.4;
+$btn-font-weight: 700;
+
+// Forms
+$input-padding-y: 12px;
+$input-padding-x: 14px;
+$input-line-height: 1.4;
+$input-bg: $bg-alt;
+$input-disabled-bg: $surface;
+$input-color: $fg;
+$input-border-color: $line;
+$input-border-radius: $border-radius;
+$input-border-radius-sm: $border-radius;
+$input-border-radius-lg: $border-radius;
+$input-focus-bg: $bg-alt;
+$input-focus-border-color: $accent;
+$input-focus-box-shadow: 0 0 0 0.25rem $blue-tint;
+$input-placeholder-color: $muted-deep;
+$input-group-addon-bg: $surface;
+$input-group-addon-color: $muted;
+$input-group-addon-border-color: $line;
+$form-label-font-size: 14px;
+$form-label-font-weight: 600;
+$form-text-color: $muted;
+$form-select-bg: $bg-alt;
+$form-select-color: $fg;
+$form-select-indicator-color: $fg;
+$form-select-disabled-bg: $surface;
+$form-check-input-bg: $bg-alt;
+$form-check-input-border: 1px solid $line;
+$form-check-input-checked-bg-color: $accent;
+$form-check-input-checked-border-color: $accent;
+$form-check-input-focus-border: $accent;
+$form-check-input-focus-box-shadow: $input-focus-box-shadow;
+$form-switch-color: $muted;
+$form-range-track-bg: $surface;
+$form-range-thumb-bg: $fg;
+$form-feedback-invalid-color: $danger;
+$form-feedback-valid-color: $success;
+$form-floating-label-opacity: 0.8;
+$form-floating-padding-x: 14px;
+
+$card-bg: $bg-alt;
+$card-border-color: transparent;
+$card-border-radius: $radius-tile;
+
+$hr-color: $line;
+$hr-opacity: 1;
+
+$navbar-padding-y: 0;
+$navbar-brand-font-size: 1.0625rem;
+$navbar-dark-color: $fg-soft;
+$navbar-dark-hover-color: #ffffff;
+$navbar-dark-active-color: #ffffff;
+$offcanvas-bg-color: $bg-alt;
+$offcanvas-color: $fg;
+$offcanvas-border-color: $line;
+
 $enable-dark-mode: false;

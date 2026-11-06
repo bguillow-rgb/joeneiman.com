@@ -1,48 +1,48 @@
-/* Layout machinery: full-bleed hero, split rows, card grid. Still wireframe-
-   plain in color and type, but the page structure is real. */
-.full-bleed { width: 100vw; margin-left: calc(50% - 50vw); }
-.hero-full { position: relative; margin-top: -2.5rem; margin-bottom: 2.5rem; }
-.hero-full img { display: block; width: 100%; height: clamp(420px, 84vh, 840px); object-fit: cover; object-position: center 44%; border-radius: 0; }
-.hero-overlay {
-  position: absolute; inset: auto 0 0 0;
-  padding: 4rem max(16px, 7vw) 2.2rem;
-  background: linear-gradient(to top, rgba(10, 11, 13, 0.82), rgba(10, 11, 13, 0));
-  color: #f4f3ee;
+/* Layout machinery: photo bands, split rows, card grid. The hero is
+   components/PageHero.vue. */
+// A container-wide photo strip, same footprint as the hero and gray bands
+.photo-band {
+  margin: 2.5rem 0 $band-margin;
+  img { display: block; width: 100%; height: min(46vh, 480px); object-fit: cover; border-radius: $radius-tile; }
+  @media (max-width: $header-compact-max) {
+    margin: 1.5rem calc(-1 * #{$grid-gutter-width * 0.5}) $band-margin-mobile;
+    img { border-radius: 0; }
+  }
 }
-.hero-overlay h1 { margin: 0 0 0.4rem; color: inherit; }
-.hero-overlay .lede { max-width: 38rem; margin: 0; color: inherit; }
+
 .split { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2.2rem, 5vw, 5rem); align-items: start; margin: 2.2rem 0; }
 .split.narrow-img { grid-template-columns: 1.4fr 0.6fr; }
 .split.flip { grid-template-columns: 0.9fr 1.1fr; }
 .split.flip > figure { order: -1; }
 .split figure { margin: 0; }
-.split figure img { width: 100%; max-height: clamp(360px, 62vh, 640px); object-fit: cover; object-position: center 28%; }
+.split figure img { width: 100%; max-height: clamp(360px, 62vh, 640px); object-fit: cover; object-position: center 28%; border-radius: $radius-tile; }
 .split h2 { margin-top: 0; }
+
+/* Cards: raised tiles on the page background, no border. */
 .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin: 1.2rem 0 0; padding: 0; list-style: none; }
 .card-grid li { margin: 0; }
 .card-grid a {
-  display: block; height: 100%; padding: 1rem 1.1rem;
-  border: 1px solid var(--line); border-radius: 4px;
+  display: block; height: 100%; padding: 1.25rem 1.3rem;
+  background: var(--bg-alt); border: 0; border-radius: $radius-tile;
   color: var(--fg); text-decoration: none;
+  transition: background-color 0.15s ease, transform 0.15s ease;
 }
-.card-grid a:hover { border-color: var(--muted); }
-.card-grid .card-title { font-weight: 600; display: block; margin-bottom: 0.35rem; }
-.card-grid .card-sub { font-family: $font-sans; font-size: 0.85rem; color: var(--muted); }
+.card-grid a:hover { background: var(--surface); text-decoration: none; color: var(--fg); }
+.card-grid .card-title { @include type('eyebrow-reduced'); display: block; margin-bottom: 0.4rem; color: #fff; }
+.card-grid .card-sub { @include type('body-reduced'); color: var(--muted); }
+.card-grid.static li {
+  @include type('body-tight');
+  padding: 1.1rem 1.3rem; background: var(--bg-alt); border: 0; border-radius: $radius-tile;
+}
+
 .band { border-top: 1px solid var(--line); margin-top: 2.8rem; padding-top: 2rem; }
 @media (max-width: $breakpoint-stack) {
   .split, .split.flip { grid-template-columns: 1fr; gap: 1.2rem; }
   .split.flip > figure { order: 0; }
-  .hero-full img { height: 58vh; }
 }
 
-.page-hero img { height: clamp(380px, 72vh, 760px); object-position: center 30%; }
-.page-hero .hero-overlay { padding-bottom: 1.6rem; }
-.card-grid.static li {
-  padding: 1rem 1.1rem; border: 1px solid var(--line); border-radius: 4px;
-}
-
-.video-embed { position: relative; aspect-ratio: 16 / 9; margin: 1.5rem 0; }
-.video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-radius: 2px; }
+.video-embed { position: relative; aspect-ratio: 16 / 9; margin: 1.5rem 0; background: var(--bg-alt); border-radius: $radius-tile; overflow: hidden; }
+.video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
 /* readable measure for direct prose on wide pages; layout blocks stay wide */
 main.wide > p, main.wide > ul:not(.card-grid) { max-width: 50rem; }

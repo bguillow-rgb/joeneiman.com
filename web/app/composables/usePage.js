@@ -8,7 +8,8 @@ export const usePage = (opts = {}) => {
   const { title, description = SITE.description, path = '', noindex = false } = opts;
 
   const canonical = `${SITE.url}${path}`;
-  const fullTitle = title ? `${title} | ${SITE.name}` : SITE.name;
+  // Every page title starts with the site name: "Joe Neiman - About"
+  const fullTitle = title ? `${SITE.name} - ${title}` : SITE.name;
   const hideFromSearch = noindex || !SITE.launched;
 
   const meta = [];

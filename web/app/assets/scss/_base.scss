@@ -1,86 +1,126 @@
-/* Wireframe styles only. Deliberately plain: readable typography, sane
-   spacing, zero visual opinion. Annotation helpers at the bottom are for
-   the review phase and go away at launch. */
+/* Base styles. Type sizes come from _typography.scss; this file is color,
+   chrome and spacing. Annotation helpers at the bottom are for the review
+   phase and go away at launch. */
 :root {
   --bg: #{$bg};
+  --bg-alt: #{$bg-alt};
+  --bg-nav: #{$bg-nav};
+  --surface: #{$surface};
   --fg: #{$fg};
+  --fg-soft: #{$fg-soft};
   --muted: #{$muted};
   --line: #{$line};
+  --accent: #{$accent};
+  --accent-hover: #{$accent-hover};
+  --button: #{$button};
+  --button-hover: #{$button-hover};
+  --button-active: #{$button-active};
   --note: #{$note};
   --note-bg: #{$note-bg};
-  color-scheme: light;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #{$bg-dark};
-    --fg: #{$fg-dark};
-    --muted: #{$muted-dark};
-    --line: #{$line-dark};
-    --note: #{$note-dark};
-    --note-bg: #{$note-bg-dark};
-    color-scheme: dark;
-  }
+  color-scheme: dark;
 }
 html, body { margin: 0; }
+html {
+  overscroll-behavior-y: none;
+  // Anchor targets land below the stuck header (bar plus the part of the gap that stays visible)
+  scroll-padding-top: $header-bar-height-mobile + $header-settle-mobile + 16px;
+  @media (min-width: $md-min) {
+    scroll-padding-top: $header-bar-height + $header-settle + 16px;
+  }
+}
 body {
   overflow-x: hidden;
   background: var(--bg);
   color: var(--fg);
-  font-family: $font-serif;
-  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
-a { color: inherit; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent); text-decoration: underline; }
+::selection { background: rgba($accent, 0.4); }
+
 .draft-ribbon {
+  @include type('caption');
   background: var(--note-bg);
   color: var(--note);
-  font-family: $font-sans;
-  font-size: 0.8rem;
   text-align: center;
   padding: 0.45rem $gutter;
 }
-.site-header {
-  display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; align-items: baseline;
-  padding: 1.25rem $gutter;
-  border-bottom: 1px solid var(--line);
+
+/* Header chrome lives in components/FloatingBar.vue and SiteHeader.vue. */
+
+// main is a flex item in the layout's column flexbox; width: 100% keeps the
+// auto margins from shrinking it to its content.
+main { width: 100%; max-width: $measure; margin: 0 auto; padding: 2.5rem $gutter 4rem; }
+// Wide pages share the contained width (and gutter) of a Bootstrap container
+main.wide { max-width: $contained-max-width; padding-left: $grid-gutter-width * 0.5; padding-right: $grid-gutter-width * 0.5; }
+// Hero pages: the hero is a full-width container, so main drops its box and
+// the page wraps the rest of its content in .page-body instead.
+main.has-hero { max-width: none; margin: 0; padding: 0 0 4rem; }
+.page-body { max-width: $contained-max-width; margin: 0 auto; padding: 0 ($grid-gutter-width * 0.5); }
+.page-body > p, .page-body > ul:not(.card-grid) { max-width: 50rem; }
+.page-body > h2 + p { margin-top: 0; }
+.container.contained { max-width: $contained-max-width; }
+
+// Below the xxl cap the containers are full width, so their gutter becomes
+// the header's inset: the hero's edge sits on the bar's edge and the body
+// text sits on the hero copy. On phones the hero goes full-bleed and the
+// text lines up with the bar's contents instead.
+// Below the xxl cap: containers sit 12px in (on the bar's edge), text columns
+// run full width and sit 24px in (on the bar's contents)
+@media (max-width: $header-compact-max) {
+  .container { --bs-gutter-x: #{$header-inset-mobile * 2}; }
+  .container.contained { --bs-gutter-x: #{($header-inset-mobile + $bar-padding-mobile) * 2}; max-width: none; }
+  main.wide:not(.has-hero), .page-body { max-width: none; padding-left: $header-inset-mobile + $bar-padding-mobile; padding-right: $header-inset-mobile + $bar-padding-mobile; }
 }
-.site-name { font-weight: 700; color: var(--fg); text-decoration: none; font-size: 1.1rem; }
-.site-nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1.1rem; }
-.site-nav a { color: var(--muted); text-decoration: none; font-family: $font-sans; font-size: 0.9rem; }
-.site-nav a:hover { color: var(--fg); }
-main { max-width: $measure; margin: 0 auto; padding: 2.5rem $gutter 4rem; }
-main.wide { max-width: $measure-wide; }
-h1 { font-size: clamp(1.9rem, 4.5vw, 2.6rem); line-height: 1.15; font-weight: 400; margin: 0 0 1rem; }
-h2 { font-size: 1.3rem; margin: 2.2rem 0 0.6rem; font-weight: 600; }
-p { margin: 0 0 1rem; }
-img { max-width: 100%; height: auto; border-radius: 2px; }
-.lede { font-size: 1.15rem; }
+
+h1, h2, h3, h4, h5, h6 { color: var(--fg); }
+img { max-width: 100%; height: auto; border-radius: $radius-image; }
+.lede { color: var(--fg); }
 .muted { color: var(--muted); }
 figure { margin: 1.5rem 0; }
-figcaption { font-family: $font-sans; font-size: 0.8rem; color: var(--muted); margin-top: 0.4rem; }
+figcaption { color: var(--muted); margin-top: 0.5rem; }
 .photo-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 .photo-row figure { flex: 1 1 240px; margin: 0.5rem 0; }
 ul { padding-left: 1.2rem; }
-li { margin-bottom: 0.45rem; }
-.cta { display: inline-block; font-family: $font-sans; border: 1px solid var(--fg); color: var(--fg); text-decoration: none; padding: 0.55rem 1.1rem; margin-top: 0.5rem; }
+li { margin-bottom: 0.45em; }
+strong { color: #fff; }
+
+/* Primary button: pill. */
+.cta {
+  @include type('button');
+  display: inline-block;
+  background: var(--button); color: #fff; text-decoration: none;
+  padding: 12px 25px; margin-top: 0.75rem;
+  line-height: 1.4; font-weight: 700;
+  border: 0; border-radius: $radius-button;
+  transition: background-color 0.15s ease;
+}
+.cta:hover { background: var(--button-hover); color: #fff; text-decoration: none; }
+.cta:active { background: var(--button-active); }
+
 .site-footer {
+  @include type('caption');
+  background: var(--bg-alt);
   border-top: 1px solid var(--line);
   padding: 1.5rem $gutter 2.5rem;
   display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; justify-content: space-between;
-  font-family: $font-sans; font-size: 0.85rem; color: var(--muted);
+  color: var(--muted);
 }
+.site-footer p { @include type('caption'); margin: 0; color: var(--muted); }
 .site-footer nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; }
 .site-footer a { color: var(--muted); text-decoration: none; }
+.site-footer a:hover { color: var(--fg); text-decoration: underline; }
 
 /* Review-phase annotations. Delete at launch. */
 mark.pending {
+  @include type('caption');
   background: var(--note-bg); color: var(--note);
-  font-family: $font-sans; font-size: 0.75rem;
-  padding: 0.1rem 0.4rem; border-radius: 3px; white-space: nowrap;
+  padding: 0.1rem 0.5rem; border-radius: $radius-small; white-space: nowrap;
 }
 .wf-note {
+  @include type('body-reduced');
   border-left: 3px solid var(--note);
   background: var(--note-bg); color: var(--note);
-  font-family: $font-sans; font-size: 0.85rem;
   padding: 0.6rem 0.9rem; margin: 1.2rem 0;
+  border-radius: 0 $radius-image $radius-image 0;
 }

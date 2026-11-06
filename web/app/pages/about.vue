@@ -1,5 +1,5 @@
 <script setup>
-definePageMeta({ wide: true });
+definePageMeta({ wide: true, hero: true });
 usePage({
   title: 'About',
   path: '/about',
@@ -10,19 +10,23 @@ const url = useUrl();
 
 <template>
   <div>
-    <div class="hero-full page-hero full-bleed">
-      <img :src="url('/assets/photos/cockpit.jpg')" alt="Joe Neiman at the controls of his TBM at sunset, headset on" width="1400" height="1274" loading="eager">
-      <div class="hero-overlay"><h1>About</h1></div>
-    </div>
+    <PageHero
+      title="About"
+      image="/assets/photos/joe-neiman-flying.jpg"
+      alt="Joe Neiman in the cockpit of his TBM at sunset, headset on"
+      width="3000"
+      height="2000"
+      position="center 35%"
+    >
+      I grew up outside Albany, New York, in a town nobody has heard of. I learned
+      the value of <b>hard work</b> early on through a combination of manual labor as a
+      landscaper and construction worker and mechanic, as well as buying and selling
+      cars in my parents' driveway starting at <b>15 years old</b>.
+    </PageHero>
 
+    <div class="page-body">
     <div class="split">
       <div>
-        <p class="lede">
-          I grew up outside Albany, New York, in a town nobody has heard of. I learned
-          the value of hard work early on through a combination of manual labor as a
-          landscaper and construction worker and mechanic, as well as buying and selling
-          cars in my parents' driveway starting at 15 years old.
-        </p>
         <h2>The first car</h2>
         <p>
           At 14 I worked summers at my uncle's car repair shop, doing the grunt work.
@@ -39,19 +43,28 @@ const url = useUrl();
       </figure>
     </div>
 
-    <h2>Lemons into lemonade</h2>
-    <p>
-      After college I started a dealership with a friend. I knew better, I ignored
-      my gut, and eleven months later he skipped town and left me about $100,000 in
-      the hole. Over the next four years I rebuilt from nothing into a former Chevy
-      dealership facility, a dozen employees, 40-plus cars a month, and a top-rated
-      seller account on eBay, before Carvana existed.
-    </p>
-    <figure class="video-embed">
-      <iframe src="https://player.vimeo.com/video/84672070" title="In Demand Auto commercial, 2014" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe>
-    </figure>
-    <p class="muted">The actual In Demand Auto commercial, 2014.</p>
+    </div>
 
+    <GraySection eyebrow="In Demand Auto">
+      <div class="row g-4 g-lg-5 align-items-center">
+        <div class="col-12 col-lg-8">
+          <VideoFrame embed="https://player.vimeo.com/video/84672070" title="In Demand Auto commercial, 2014" />
+        </div>
+        <div class="col-12 col-lg-4">
+          <h2>Lemons into lemonade</h2>
+          <p>
+            After college I started a dealership with a friend. I knew better, I ignored
+            my gut, and eleven months later he skipped town and left me about $100,000 in
+            the hole. Over the next four years I rebuilt from nothing into a former Chevy
+            dealership facility, a dozen employees, 40-plus cars a month, and a top-rated
+            seller account on eBay, before Carvana existed.
+          </p>
+          <p class="muted">The actual In Demand Auto commercial, 2014.</p>
+        </div>
+      </div>
+    </GraySection>
+
+    <div class="page-body">
     <h2>ACV Auctions</h2>
     <div class="split narrow-img">
       <p>
@@ -137,5 +150,6 @@ const url = useUrl();
       I've read hundreds of books in my adult life. I try to be a student of lives
       well lived, and try to apply the lessons learned to my life.
     </p>
+    </div>
   </div>
 </template>

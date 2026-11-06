@@ -16,6 +16,7 @@ export const SITE = {
   ],
 };
 
+// Header links. Contact is the "Get in Touch" button, not a nav item.
 export const NAV = [
   { label: 'About', href: '/about' },
   { label: 'Ventures', href: '/ventures' },
@@ -23,5 +24,7 @@ export const NAV = [
   { label: 'Giving', href: '/giving' },
   { label: 'Speaking', href: '/speaking' },
   { label: 'Writing', href: '/writing' },
-  { label: 'Contact', href: '/contact' },
 ];
+
+// Footer keeps the full list
+export const FOOTER_NAV = [...NAV, { label: 'Contact', href: '/contact' }];

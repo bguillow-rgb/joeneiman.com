@@ -18,7 +18,21 @@ export default defineNuxtConfig({
     strict: false,
   },
 
-  modules: ['@nuxtjs/sitemap'],
+  modules: ['@nuxtjs/sitemap', '@vee-validate/nuxt'],
+
+  // Keep bare component names: <InputText>, not <FormsInputText>
+  components: [{ path: '~/components', pathPrefix: false }],
+
+  // Prefix VeeValidate's own components so they don't read like native <form>
+  veeValidate: {
+    autoImports: true,
+    componentNames: {
+      Form: 'VeeForm',
+      Field: 'VeeField',
+      FieldArray: 'VeeFieldArray',
+      ErrorMessage: 'VeeErrorMessage',
+    },
+  },
 
   devServer: {
     port: 8080,
@@ -51,7 +65,7 @@ export default defineNuxtConfig({
   // makes the same constants available inside component <style lang="scss">
   // blocks without an explicit import (main.scss is skipped since it imports
   // them itself).
-  css: ['~/assets/scss/main.scss'],
+  css: ['@fontsource-variable/inter', '~/assets/scss/main.scss'],
   vite: {
     css: {
       preprocessorOptions: {

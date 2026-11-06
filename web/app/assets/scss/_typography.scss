@@ -1,0 +1,38 @@
+// Typography defaults and utility classes, driven by $type-scale and the
+// type() mixin in _constants.scss.
+//
+//   @include type('headline');           // in any component or partial
+//   <h2 class="typography-eyebrow">      // or as a utility class in markup
+
+// Utility classes (typography-headline, typography-body, ...).
+@each $name, $steps in $type-scale {
+  .typography-#{$name} { @include type($name); }
+}
+
+// Universal defaults: every element on the site gets the scale.
+html {
+  font-size: $font-size-root;
+  font-family: $font-text;
+  quotes: '\201C' '\201D';
+}
+body {
+  @include type('body');
+  font-style: normal;
+}
+h1 { @include type('headline-elevated'); }
+h2 { @include type('headline-reduced'); }
+h3 { @include type('eyebrow'); }
+h4 { @include type('eyebrow-reduced'); }
+h5, h6 { @include type('tout'); }
+p, li, dd, blockquote { @include type('body'); }
+small, figcaption { @include type('body-reduced'); }
+.lede { @include type('intro'); }
+strong, b { font-weight: 600; }
+
+// Rhythm between headlines and copy.
+h1, h2, h3, h4, h5, h6 { margin: 0 0 $headline-plus-first-element-margin * 0.5; }
+h2, h3 { margin-top: 2.4em; }
+h1 + p, h2 + p, h3 + p, h1 + ul, h2 + ul, h3 + ul,
+h1 + .lede, h2 + .lede, h1 + .split, h2 + .split { margin-top: 0; }
+p { margin: 0 0 $paragraph-plus-element-margin; }
+p + .cta, ul + .cta { margin-top: $paragraph-plus-element-margin; }

@@ -1,5 +1,5 @@
 <script setup>
-definePageMeta({ wide: true });
+definePageMeta({ wide: true, hero: true });
 usePage({
   title: 'Advisory',
   path: '/advisory',
@@ -10,16 +10,23 @@ const url = useUrl();
 
 <template>
   <div>
-    <h1>Advisory and mentoring</h1>
+    <PageHero
+      title="Advisory"
+      image="/assets/photos/joe-porsche-lean.jpg"
+      alt="Joe Neiman leaning on a white Porsche 911 with blue stripes"
+      width="1800"
+      height="1200"
+      position="center 10%"
+    >
+      Mostly I just dabble and get pulled into things in a very informal way: a
+      founder who needs a gut check, a dealer weighing a sale, somebody staring at a
+      term sheet. The areas where I can actually help are startup scaling,
+      marketplaces, the auto dealer and used car business, and general aviation.
+    </PageHero>
 
+    <div class="page-body">
     <div class="split narrow-img">
       <div>
-        <p class="lede">
-          Mostly I just dabble and get pulled into things in a very informal way: a
-          founder who needs a gut check, a dealer weighing a sale, somebody staring at a
-          term sheet. The areas where I can actually help are startup scaling,
-          marketplaces, the auto dealer and used car business, and general aviation.
-        </p>
         <h2>How I think about it</h2>
         <p>
           I was on the other side of this for years. The advice that actually helped me
@@ -40,6 +47,7 @@ const url = useUrl();
           <li><strong>FoodNerd</strong>, advisor and mentor.</li>
         </ul>
       </div>
+    </div>
     </div>
   </div>
 </template>
