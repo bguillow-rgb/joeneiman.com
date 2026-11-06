@@ -53,13 +53,14 @@ web/
   public/            photos, favicon, robots.txt
 ```
 
-Analytics IDs come from env vars at build time: `NUXT_PUBLIC_GA4_ID`, `NUXT_PUBLIC_GSC_VERIFICATION`, `NUXT_PUBLIC_INDEXNOW_KEY`.
+Analytics IDs come from env vars at build time: `NUXT_PUBLIC_GA4_ID` and `NUXT_PUBLIC_GSC_VERIFICATION`. Both are empty by default, which leaves analytics and the verification tag off.
 
 ## Launch checklist
 
 1. Wire the forms. `ContactForm.vue` and `NewsletterForm.vue` both mock their submit (see the `TODO` in each `onSubmit`): they show the success state and discard the input. Until a backend is connected, nothing sent through them is received.
 2. Set `launched: true` in `web/app/utils/site.js`. This drops the `noindex` tag, fills the sitemap, and turns on the Person and WebSite schema. Open Graph and Twitter card tags are always on, with a 1200x630 image per page under `web/public/assets/og/`.
 3. In `.github/workflows/deploy.yml`, set `PREVIEW` to `""` so the build uses the root base path and `https://joeneiman.com`.
-4. Put the custom domain in place: copy `CNAME.launch` to `web/public/CNAME`, point DNS at GitHub Pages, add the domain in Settings > Pages, enforce HTTPS.
-5. Optional: set `NUXT_PUBLIC_GA4_ID` and `NUXT_PUBLIC_GSC_VERIFICATION` in the build environment to turn on analytics and Search Console verification. Empty values keep both off.
-6. Share a page URL in Slack or iMessage to confirm the link preview card shows up.
+4. Put the custom domain in place: copy `CNAME.launch` to `web/public/CNAME`, point DNS at GitHub Pages (A records for the apex to GitHub's four Pages IPs, plus a `www` CNAME to `bguillow-rgb.github.io`), add the domain in Settings > Pages, and enforce HTTPS once the certificate is issued.
+5. Push to `main`. The deploy workflow builds and publishes on every push; watch the Actions tab for the run to finish.
+6. Optional: add `NUXT_PUBLIC_GA4_ID` and `NUXT_PUBLIC_GSC_VERIFICATION` to the build step's `env` in `.github/workflows/deploy.yml` (repository variables work well) to turn on analytics and Search Console verification. Empty values keep both off.
+7. Share a page URL in Slack or iMessage to confirm the link preview card shows up, and open `https://joeneiman.com/sitemap.xml` to confirm it lists the pages.
