@@ -3,6 +3,7 @@ definePageMeta({ wide: true, hero: true });
 usePage({
   title: 'Writing',
   path: '/writing',
+  image: '/assets/og/writing.jpg',
   description: 'Essays from Joe Neiman on entrepreneurship, deals, flying, and health. A book is on the way.',
 });
 </script>

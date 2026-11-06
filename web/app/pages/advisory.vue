@@ -3,6 +3,7 @@ definePageMeta({ wide: true, hero: true });
 usePage({
   title: 'Advisory',
   path: '/advisory',
+  image: '/assets/og/advisory.jpg',
   description: 'Where Joe Neiman advises and mentors: startup scaling, marketplaces, the auto business, and founders who want a sounding board.',
 });
 const roles = [
@@ -26,11 +27,12 @@ const roles = [
     <PageHero
       eyebrow="Mentoring"
       title="Advisory"
-      image="/assets/photos/joe-porsche-lean.jpg"
-      alt="Joe Neiman leaning on a white Porsche 911 with blue stripes"
-      width="1800"
-      height="1200"
-      position="center 10%"
+      image="/assets/photos/joe-plane.jpg"
+      alt="Joe Neiman walking across the ramp toward his TBM"
+      width="2528"
+      height="1684"
+      position="center 35%"
+      focus="66.667%"
     >
       Mostly I just dabble and get pulled into things in a very informal way: a
       founder who needs a gut check, a dealer weighing a sale, somebody staring at a

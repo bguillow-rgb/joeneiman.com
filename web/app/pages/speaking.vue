@@ -3,6 +3,7 @@ definePageMeta({ wide: true, hero: true });
 usePage({
   title: 'Speaking',
   path: '/speaking',
+  image: '/assets/og/speaking.jpg',
   description: 'Joe Neiman speaks about entrepreneurship, recognizing opportunity, and building a business without wrecking your health. Fireside chats preferred.',
 });
 const url = useUrl();

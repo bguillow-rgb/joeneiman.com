@@ -3,6 +3,7 @@ definePageMeta({ wide: true, hero: true });
 usePage({
   title: 'Ventures',
   path: '/ventures',
+  image: '/assets/og/ventures.jpg',
   description: "What Joe Neiman has built and what he's buying now: ACV Auctions, DealerClub, franchise dealerships, and airplanes.",
 });
 const built = [

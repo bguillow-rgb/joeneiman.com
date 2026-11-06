@@ -90,6 +90,8 @@ export default defineNuxtConfig({
   // (NUXT_PUBLIC_GA4_ID, NUXT_PUBLIC_GSC_VERIFICATION, NUXT_PUBLIC_INDEXNOW_KEY).
   runtimeConfig: {
     public: {
+      // Absolute origin for share images and other links that must be absolute
+      siteUrl,
       ga4Id: '',
       gscVerification: '',
       indexNowKey: '',

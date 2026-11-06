@@ -3,6 +3,7 @@ definePageMeta({ wide: true, hero: true });
 usePage({
   title: 'Giving',
   path: '/giving',
+  image: '/assets/og/giving.jpg',
   description: "The causes Joe Neiman supports: Marici's fight against child trafficking, and Angel Flight missions with SkyHope.",
 });
 const causes = [

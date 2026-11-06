@@ -3,6 +3,7 @@ definePageMeta({ wide: true, hero: true });
 usePage({
   title: 'About',
   path: '/about',
+  image: '/assets/og/about.jpg',
   description: "Joe Neiman's story: flipping cars at 15, co-founding ACV Auctions through its $5B IPO, founding DealerClub, flying, and healing.",
 });
 const url = useUrl();
