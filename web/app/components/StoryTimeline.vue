@@ -6,9 +6,10 @@
       <div v-if="$slots.default" class="lede-copy"><slot /></div>
     </div>
 
-    <ol ref="spine" class="chapters">
+    <div ref="spine" class="chapters">
       <span ref="fill" class="fill" aria-hidden="true" />
 
+      <ol class="list">
       <li v-for="item in items" :key="item.key" class="chapter" v-reveal>
         <div class="card">
           <div
@@ -49,7 +50,8 @@
           </div>
         </div>
       </li>
-    </ol>
+      </ol>
+    </div>
   </section>
 </template>
 
@@ -168,14 +170,10 @@ $cell-gap: 4px;
   b, strong { color: #fff; font-weight: 600; }
 }
 
-// The spine: a divider-coloured line with the accent fill laid over it
+// The spine: a divider-coloured line with the accent fill laid over it. The
+// fill sits beside the list, not in it, so the list holds only items.
 .chapters {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  margin: 0;
-  padding: 0;
 
   &::before,
   .fill {
@@ -196,6 +194,14 @@ $cell-gap: 4px;
     height: 0;
     background: var(--accent);
   }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .chapter {
@@ -278,17 +284,16 @@ $cell-gap: 4px;
     width: calc(50% - #{$reach});
     margin-top: -$overlap;
 
-    // -of-type: the fill span is the list's first child, the cards are the li's
-    &:first-of-type { margin-top: 0; }
+    &:first-child { margin-top: 0; }
 
-    &:nth-of-type(odd) {
+    &:nth-child(odd) {
       align-self: flex-start;
 
       &::before { right: -($reach + $dot * 0.5); }
       &::after { right: -($reach - $dot * 0.5); width: $reach - $dot * 0.5; }
     }
 
-    &:nth-of-type(even) {
+    &:nth-child(even) {
       align-self: flex-end;
 
       &::before { left: -($reach + $dot * 0.5); }

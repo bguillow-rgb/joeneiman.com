@@ -1,5 +1,6 @@
 <template>
-  <section class="container cta-wrap">
+  <!-- Named, so the band is a region landmark: it sits outside <main> in the layout -->
+  <section class="container cta-wrap" aria-labelledby="cta-band-title">
     <div class="cta-band">
       <img class="photo" :src="url(image)" alt="" :style="{ objectPosition: position }" loading="lazy" decoding="async">
       <div class="dots" :style="{ backgroundImage: `url(${url('/assets/dot-matrix.png')})` }" aria-hidden="true" />
@@ -7,7 +8,7 @@
 
       <div class="body" v-reveal.children>
         <p class="upper-tag">{{ eyebrow }}</p>
-        <h2 class="title">{{ title }}</h2>
+        <h2 id="cta-band-title" class="title">{{ title }}</h2>
         <p class="copy"><slot /></p>
         <div class="actions">
           <NuxtLink class="btn btn-primary" :to="to">{{ linkText }}</NuxtLink>
