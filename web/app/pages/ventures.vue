@@ -86,10 +86,10 @@ const interests = [
       I'm mostly buying instead of building, and I'm still looking.
     </PageHero>
 
-    <TileGallery eyebrow="Built" title="What I've built" :items="built">
+    <TileGallery eyebrow="The track record" title="What I've built" :items="built">
       <p>
-        Three businesses, one thread: moving cars better than the last way. A lot on
-        eBay before that was normal, then the auction everyone in wholesale uses, then
+        Finding new ways to move cars better than the last way. A lot on
+        eBay before that was normal, then the transformation of the online wholesale auction, then
         the one built on reputation. <b>ACV</b> went public on the Nasdaq in 2021 and
         <b>DealerClub</b> was acquired by Cars Commerce.
       </p>
