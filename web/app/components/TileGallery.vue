@@ -20,6 +20,7 @@
             :alt="item.alt"
             :style="{ objectPosition: item.position || 'center', objectFit: item.fit || 'cover', mixBlendMode: item.blend || null }"
             loading="lazy"
+            decoding="async"
           >
         </div>
         <p class="caption"><b>{{ item.title }}.</b> {{ item.text }}</p>
@@ -111,7 +112,7 @@ $gap: 24px;
   @include type('body-reduced');
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   color: var(--accent);
   margin: 0 0 0.75rem;
 }

@@ -270,7 +270,9 @@ $btn-font-weight: 700;
 // Forms
 $input-padding-y: 12px;
 $input-padding-x: 14px;
-$input-line-height: 24px;
+// Unitless (24px on the 17px base): Bootstrap multiplies this by 1em when it
+// sizes inputs, which a px value turns into invalid CSS
+$input-line-height: 1.4117647059;   // 24 / 17
 // One step lighter than the card they usually sit on
 $input-bg: $surface;
 $input-disabled-bg: $bg-alt;

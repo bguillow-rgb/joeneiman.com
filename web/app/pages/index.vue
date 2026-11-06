@@ -110,9 +110,9 @@ const ventures = [
       </div>
       <div class="col-12 col-lg-6 order-first order-lg-last">
         <div class="bento">
-          <img class="tall" :src="url('/assets/photos/joe-porsche-wide.jpg')" alt="Joe Neiman standing beside a white air-cooled Porsche 911" loading="lazy">
-          <img :src="url('/assets/photos/waco.jpg')" alt="Red Waco YMF-5 biplane in a hangar" loading="lazy">
-          <img :src="url('/assets/photos/tbm-door.jpg')" alt="Joe Neiman giving a thumbs-up from the open door of his TBM" loading="lazy">
+          <img class="tall" :src="url('/assets/photos/joe-porsche-wide.jpg')" alt="Joe Neiman standing beside a white air-cooled Porsche 911" width="1800" height="1200" loading="lazy" decoding="async">
+          <img :src="url('/assets/photos/waco.jpg')" alt="Red Waco YMF-5 biplane in a hangar" width="1600" height="1200" loading="lazy" decoding="async">
+          <img :src="url('/assets/photos/tbm-door.jpg')" alt="Joe Neiman giving a thumbs-up from the open door of his TBM" width="1200" height="1600" loading="lazy" decoding="async">
         </div>
       </div>
     </div>

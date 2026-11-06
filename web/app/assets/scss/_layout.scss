@@ -1,4 +1,4 @@
-/* Layout machinery: photo bands, split rows, card grid. The hero is
+/* Layout machinery: photo bands, bento, card grid. The hero is
    components/PageHero.vue. */
 // A container-wide photo strip, same footprint as the hero and gray bands
 .photo-band {
@@ -26,7 +26,7 @@
   @include type('body-reduced');
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   color: var(--accent);
   margin: 0 0 0.75rem;
 }
@@ -45,14 +45,6 @@
 }
 .looking .cta { margin-top: 1.25rem; }
 
-.split { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2.2rem, 5vw, 5rem); align-items: start; margin: 2.2rem 0; }
-.split.narrow-img { grid-template-columns: 1.4fr 0.6fr; }
-.split.flip { grid-template-columns: 0.9fr 1.1fr; }
-.split.flip > figure { order: -1; }
-.split figure { margin: 0; }
-.split figure img { width: 100%; max-height: clamp(360px, 62vh, 640px); object-fit: cover; object-position: center 28%; border-radius: $radius-tile; }
-.split h2 { margin-top: 0; }
-
 /* Cards: raised tiles on the page background, no border. */
 .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin: 1.2rem 0 0; padding: 0; list-style: none; }
 .card-grid li { margin: 0; }
@@ -68,12 +60,6 @@
 .card-grid.static li {
   @include type('body-tight');
   padding: 1.1rem 1.3rem; background: var(--bg-alt); border: 0; border-radius: $radius-tile;
-}
-
-.band { border-top: 1px solid var(--line); margin-top: 2.8rem; padding-top: 2rem; }
-@media (max-width: $breakpoint-stack) {
-  .split, .split.flip { grid-template-columns: 1fr; gap: 1.2rem; }
-  .split.flip > figure { order: 0; }
 }
 
 .video-embed { position: relative; aspect-ratio: 16 / 9; margin: 1.5rem 0; background: var(--bg-alt); border-radius: $radius-tile; overflow: hidden; }

@@ -2,7 +2,7 @@
   <NuxtLink :to="to" class="feature-card">
     <div class="row g-0">
       <div class="col-md-4 media">
-        <img class="card-img" :src="url(image)" :alt="alt" :style="{ objectPosition: position }" loading="lazy">
+        <img class="card-img" :src="url(image)" :alt="alt" :style="{ objectPosition: position }" loading="lazy" decoding="async">
       </div>
       <div class="col-md-8">
         <div class="card-body">
@@ -114,7 +114,7 @@ $card-height: 240px;
   @include type('body-reduced');
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   color: var(--accent);
   margin: 0 0 0.5rem;
 }

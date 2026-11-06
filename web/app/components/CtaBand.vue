@@ -1,7 +1,7 @@
 <template>
   <section class="container cta-wrap">
     <div class="cta-band">
-      <img class="photo" :src="url(image)" alt="" :style="{ objectPosition: position }" loading="lazy">
+      <img class="photo" :src="url(image)" alt="" :style="{ objectPosition: position }" loading="lazy" decoding="async">
       <div class="dots" :style="{ backgroundImage: `url(${url('/assets/dot-matrix.png')})` }" aria-hidden="true" />
       <div class="shade" aria-hidden="true" />
 
@@ -97,7 +97,7 @@ const url = useUrl();
   @include type('body-reduced');
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   color: var(--accent);
   margin: 0 0 0.75rem;
 }

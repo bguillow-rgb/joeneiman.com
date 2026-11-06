@@ -33,6 +33,6 @@ strong, b { font-weight: 600; }
 h1, h2, h3, h4, h5, h6 { margin: 0 0 $headline-plus-first-element-margin * 0.5; }
 h2, h3 { margin-top: 2.4em; }
 h1 + p, h2 + p, h3 + p, h1 + ul, h2 + ul, h3 + ul,
-h1 + .lede, h2 + .lede, h1 + .split, h2 + .split { margin-top: 0; }
+h1 + .lede, h2 + .lede { margin-top: 0; }
 p { margin: 0 0 $paragraph-plus-element-margin; }
 p + .cta, ul + .cta { margin-top: $paragraph-plus-element-margin; }

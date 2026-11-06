@@ -59,7 +59,7 @@ $gap: 24px;
   @include type('body-reduced');
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   color: var(--accent);
   margin: 0 0 0.75rem;
 }

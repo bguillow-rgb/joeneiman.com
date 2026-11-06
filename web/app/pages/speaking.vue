@@ -50,9 +50,9 @@ const url = useUrl();
       </div>
       <div class="col-12 col-lg-6 order-first order-lg-last">
         <div class="bento">
-          <img class="tall" :src="url('/assets/photos/studio-set.jpg')" alt="Joe Neiman on a video set before a recording" loading="lazy">
-          <img :src="url('/assets/photos/ipo-day-nasdaq.jpg')" alt="ACV Auctions on the Nasdaq board on IPO day" loading="lazy">
-          <img :src="url('/assets/photos/43north-win.jpg')" alt="The ACV team celebrating the 43North win" loading="lazy">
+          <img class="tall" :src="url('/assets/photos/studio-set.jpg')" alt="Joe Neiman on a video set before a recording" width="1600" height="1200" loading="lazy" decoding="async">
+          <img :src="url('/assets/photos/ipo-day-nasdaq.jpg')" alt="ACV Auctions on the Nasdaq board on IPO day" width="568" height="696" loading="lazy" decoding="async">
+          <img :src="url('/assets/photos/43north-win.jpg')" alt="The ACV team celebrating the 43North win" width="920" height="627" loading="lazy" decoding="async">
         </div>
       </div>
     </div>

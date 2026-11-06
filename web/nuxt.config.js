@@ -49,6 +49,10 @@ export default defineNuxtConfig({
         { name: 'theme-color', content: '#0a0b0d' },
       ],
       link: [
+        // The Font Awesome kit script loads its CSS and fonts from a second
+        // host; opening both connections early takes them off the critical path
+        { rel: 'preconnect', href: 'https://kit.fontawesome.com', crossorigin: 'anonymous' },
+        { rel: 'preconnect', href: 'https://ka-f.fontawesome.com', crossorigin: 'anonymous' },
         // Icons live under /icons; the manifest's own paths are relative to it
         { rel: 'icon', type: 'image/png', href: `${baseURL}icons/favicon-96x96.png`, sizes: '96x96' },
         { rel: 'icon', type: 'image/svg+xml', href: `${baseURL}icons/favicon.svg` },

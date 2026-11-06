@@ -223,7 +223,7 @@ const crop = computed(() => {
   @include type('body-reduced');
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   margin: 0 0 0.75rem;
   color: var(--accent);
 }

@@ -8,9 +8,9 @@ usePage({
 });
 const causes = [
   {
-    image: '/assets/photos/card-criminology.webp',
-    alt: 'A child peering over a wall between wooden bars',
-    position: 'center',
+    image: '/assets/photos/marici.webp',
+    alt: 'A smiling girl outdoors in golden afternoon light',
+    position: 'center 30%',
     title: 'Marici',
     text: 'Dismantling global child sex trafficking: taking down the networks, and healing the kids who come out of them.',
     to: 'https://marici.org',
