@@ -6,21 +6,31 @@
       <div class="lede-copy"><slot /></div>
     </div>
 
-    <div ref="scroller" class="scroller" @scroll.passive="update" v-reveal.children>
+    <div ref="scroller" :class="fixed ? 'grid' : 'scroller'" @scroll.passive="update" v-reveal.children>
       <NuxtLink
         v-for="item in items"
         :key="item.title"
         :to="item.to"
+        :target="item.target"
         class="tile"
       >
-        <div class="media">
-          <img :src="url(item.image)" :alt="item.alt" :style="{ objectPosition: item.position || 'center' }" loading="lazy">
+        <div class="media" :style="item.bg ? { background: item.bg } : null">
+          <img
+            :src="url(item.image)"
+            :alt="item.alt"
+            :style="{ objectPosition: item.position || 'center', objectFit: item.fit || 'cover', mixBlendMode: item.blend || null }"
+            loading="lazy"
+          >
         </div>
         <p class="caption"><b>{{ item.title }}.</b> {{ item.text }}</p>
+        <p v-if="item.showUrl" class="link">
+          {{ hostOf(item.to) }}
+          <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true" />
+        </p>
       </NuxtLink>
     </div>
 
-    <div class="controls" v-reveal="{ with: '.scroller .tile', delay: 180 }">
+    <div v-if="!fixed" class="controls" v-reveal="{ with: '.scroller .tile', delay: 180 }">
       <button type="button" class="paddle" :disabled="atStart" aria-label="Previous" @click="step(-1)">
         <i class="fa-solid fa-chevron-left" aria-hidden="true" />
       </button>
@@ -35,11 +45,18 @@
 defineProps({
   eyebrow: { type: String, default: '' },
   title: { type: String, default: '' },
-  // [{ image, alt, position, title, text, to }]
+  // [{ image, alt, position, fit, bg, blend, title, text, to, target, showUrl }]
+  // fit: 'contain' with a bg colour shows a product shot whole instead of cropping it;
+  // blend: 'multiply' with a bg colour tints a white-background shot to that colour
   items: { type: Array, required: true },
+  // Lay the tiles out in a plain two-up grid instead of the swipeable row
+  fixed: { type: Boolean, default: false },
 });
 
 const url = useUrl();
+// "marici.org" for an external link's display line
+const hostOf = (to) => to.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+
 const scroller = ref(null);
 const atStart = ref(true);
 const atEnd = ref(false);
@@ -134,6 +151,19 @@ $gap: 24px;
   &::-webkit-scrollbar { display: none; }
 }
 
+// Fixed variant: two tiles side by side, stacked on phones
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $gap;
+
+  @media (min-width: $md-min) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tile { width: auto; }
+}
+
 .tile {
   flex: 0 0 auto;
   width: 42%;
@@ -179,6 +209,21 @@ $gap: 24px;
 
   b { color: var(--fg); font-weight: 600; }
 }
+
+// External link line under the caption
+.link {
+  @include type('body');
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  margin: 0.75rem 0 0;
+  color: var(--accent);
+
+  i { font-size: 0.7em; }
+}
+
+.tile:hover .link { color: var(--accent-hover); }
 
 .controls {
   display: flex;

@@ -133,8 +133,8 @@ $breakpoint-stack: $bp-small;
 $radius-tile: 12px;
 $radius-image: 12px;
 $radius-hero: 12px;
-$radius-input: 10px;
 $radius-button: 6px;
+$radius-input: $radius-button;   // inputs match the buttons
 $radius-small: 6px;
 $radius-pill: $radius-button;   // legacy alias
 
@@ -220,6 +220,8 @@ $container-max-widths: (
 // No smooth scrolling on the root: route changes jump straight to the top
 // like a normal page load
 $enable-smooth-scroll: false;
+// Invalid fields get the red border and message only, no glyph in the field
+$enable-validation-icons: false;
 $primary: $button;
 $secondary: $muted;
 $success: #30d158;
@@ -262,21 +264,22 @@ $btn-border-radius-lg: $radius-button;
 // Buttons and inputs are both 50px tall
 $btn-padding-y: 12px;
 $btn-padding-x: 25px;
-$btn-line-height: 1.4;
+$btn-line-height: 24px;   // 12 + 24 + 12 + 2px border = 50px
 $btn-font-weight: 700;
 
 // Forms
 $input-padding-y: 12px;
 $input-padding-x: 14px;
-$input-line-height: 1.4;
-$input-bg: $bg-alt;
-$input-disabled-bg: $surface;
+$input-line-height: 24px;
+// One step lighter than the card they usually sit on
+$input-bg: $surface;
+$input-disabled-bg: $bg-alt;
 $input-color: $fg;
 $input-border-color: $line;
 $input-border-radius: $border-radius;
 $input-border-radius-sm: $border-radius;
 $input-border-radius-lg: $border-radius;
-$input-focus-bg: $bg-alt;
+$input-focus-bg: $surface;
 $input-focus-border-color: $accent;
 $input-focus-box-shadow: 0 0 0 0.25rem $blue-tint;
 $input-placeholder-color: $muted-deep;
@@ -286,11 +289,11 @@ $input-group-addon-border-color: $line;
 $form-label-font-size: 14px;
 $form-label-font-weight: 600;
 $form-text-color: $muted;
-$form-select-bg: $bg-alt;
+$form-select-bg: $surface;
 $form-select-color: $fg;
 $form-select-indicator-color: $fg;
-$form-select-disabled-bg: $surface;
-$form-check-input-bg: $bg-alt;
+$form-select-disabled-bg: $bg-alt;
+$form-check-input-bg: $surface;
 $form-check-input-border: 1px solid $line;
 $form-check-input-checked-bg-color: $accent;
 $form-check-input-checked-border-color: $accent;

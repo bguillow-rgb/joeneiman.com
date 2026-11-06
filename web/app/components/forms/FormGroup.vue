@@ -12,7 +12,7 @@
         v-if="label"
         :for="fieldset ? null : id"
         class="form-label fw-semibold"
-        :class="{ 'mb-2': fieldset }"
+        :class="{ 'mb-2': fieldset, 'visually-hidden': hideLabel }"
       >
         {{ label }}<span v-if="required" class="text-danger" aria-hidden="true"> *</span>
       </component>
@@ -33,5 +33,7 @@ defineProps({
   required: { type: Boolean, default: false },
   fieldset: { type: Boolean, default: false },
   floating: { type: Boolean, default: false },
+  // Keep the label for screen readers only
+  hideLabel: { type: Boolean, default: false },
 });
 </script>

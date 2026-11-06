@@ -14,8 +14,9 @@
               type="email"
               autocomplete="email"
               inputmode="email"
-              placeholder="you@example.com"
-              floating
+              placeholder="Your email"
+              hide-label
+              :asterisk="false"
               required
             />
           </div>
@@ -54,10 +55,5 @@ async function onSubmit() {
 <style scoped lang="scss">
 .newsletter {
   max-width: 34rem;
-}
-
-// Match the 50px floating control
-.btn {
-  min-height: 50px;
 }
 </style>

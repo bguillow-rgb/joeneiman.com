@@ -5,7 +5,20 @@ usePage({
   path: '/advisory',
   description: 'Where Joe Neiman advises and mentors: startup scaling, marketplaces, the auto business, and founders who want a sounding board.',
 });
-const url = useUrl();
+const roles = [
+  {
+    image: '/assets/photos/02-four-packs.webp',
+    alt: 'Four packs of FoodNerd Mega Puffs',
+    position: 'center',
+    bg: '#f6f0e4',
+    blend: 'multiply',
+    title: 'FoodNerd',
+    text: 'Buffalo-based toddler snacks: organic, freeze-dried puffs made from fruit, vegetables, and sprouted seeds with nothing added. Advisor and mentor.',
+    to: 'https://foodnerdinc.com',
+    target: '_blank',
+    showUrl: true,
+  },
+];
 </script>
 
 <template>
@@ -25,30 +38,16 @@ const url = useUrl();
       marketplaces, the auto dealer and used car business, and general aviation.
     </PageHero>
 
-    <div class="page-body">
-    <div class="split narrow-img">
-      <div>
-        <h2>How I think about it</h2>
-        <p>
-          I was on the other side of this for years. The advice that actually helped me
-          came from people who had done the thing themselves and would tell me the truth
-          about it, and that's the kind I try to give.
-        </p>
-        <p>
-          If you're building something in my lanes and want a straight answer,
-          <NuxtLink to="/contact">reach out</NuxtLink>.
-        </p>
-      </div>
-      <div>
-        <figure style="max-width: 360px;">
-          <img :src="url('/assets/photos/joe-headshot-brick.jpg')" alt="Joe Neiman headshot against a brick wall" width="754" height="754" loading="eager">
-        </figure>
-        <h2 style="margin-top: 1rem;">Current roles</h2>
-        <ul>
-          <li><strong>FoodNerd</strong>, advisor and mentor.</li>
-        </ul>
-      </div>
-    </div>
-    </div>
+    <TileGallery eyebrow="Current roles" title="Where I'm involved" :items="roles" fixed>
+      <p>
+        I was on the other side of this for years. The advice that actually helped me
+        came from people who had done the thing themselves and would tell me the truth
+        about it, and that's the kind I try to give.
+      </p>
+      <p>
+        If you're building something in my lanes and want a straight answer,
+        <NuxtLink to="/contact">reach out</NuxtLink>.
+      </p>
+    </TileGallery>
   </div>
 </template>

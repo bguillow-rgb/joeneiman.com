@@ -5,7 +5,67 @@ usePage({
   path: '/ventures',
   description: "What Joe Neiman has built and what he's buying now: ACV Auctions, DealerClub, franchise dealerships, and airplanes.",
 });
-const url = useUrl();
+const built = [
+  {
+    to: 'https://www.acvauctions.com',
+    target: '_blank',
+    showUrl: true,
+    image: '/assets/photos/ipo-day-nasdaq.jpg',
+    alt: 'ACV Auctions on the Nasdaq board on IPO day',
+    position: 'center 30%',
+    title: 'ACV Auctions',
+    text: 'Co-founder. Online wholesale auto auctions, Buffalo, NY. From 50 cars a month to 50,000+, through a 2021 Nasdaq IPO at a valuation over $5 billion.',
+  },
+  {
+    to: 'https://dealerclub.com',
+    target: '_blank',
+    showUrl: true,
+    image: '/assets/photos/nada-cars-commerce.jpg',
+    alt: 'The DealerClub team at the NADA show after the Cars Commerce announcement',
+    position: 'center',
+    title: 'DealerClub',
+    text: 'Founder. The reputation-based wholesale auction. Self-funded, built with the team behind it, acquired by Cars Commerce.',
+  },
+  {
+    to: '/about',
+    image: '/assets/photos/in-demand-auto.jpg',
+    alt: 'The In Demand Auto lot in Albany',
+    position: 'center 45%',
+    title: 'In Demand Auto',
+    text: 'Where it started. A used car dealership in Albany that sold 40+ cars a month, largely on eBay, years before online car sales were normal.',
+  },
+];
+
+const interests = [
+  {
+    to: '/contact',
+    icon: 'fa-solid fa-store',
+    title: 'Franchise dealerships',
+    text: 'Buying, selling, and brokering. Sellers who would rather skip the public listing are welcome.',
+    more: 'Bring me a deal',
+  },
+  {
+    to: '/contact',
+    icon: 'fa-solid fa-plane-up',
+    title: 'Airplanes',
+    text: 'Ones worth owning or trading. I fly what I buy, and I know what a good one looks like.',
+    more: 'Bring me a deal',
+  },
+  {
+    to: '/contact',
+    icon: 'fa-solid fa-rocket',
+    title: 'Early-stage companies',
+    text: 'Doing neat things with health and wellness, marketplaces, and transportation.',
+    more: 'Bring me a deal',
+  },
+  {
+    to: '/contact',
+    icon: 'fa-solid fa-car',
+    title: 'Specialty cars and trucks',
+    text: 'Air-cooled Porsches first, and anything else unusual enough to be worth a conversation.',
+    more: 'Bring me a deal',
+  },
+];
 </script>
 
 <template>
@@ -26,35 +86,24 @@ const url = useUrl();
       I'm mostly buying instead of building, and I'm still looking.
     </PageHero>
 
-    <div class="page-body">
-    <h2>Built</h2>
-    <ul>
-      <li><strong>ACV Auctions</strong>, co-founder. Online wholesale auto auctions, Buffalo, NY. From 50 cars a month to 50,000+, through a 2021 Nasdaq IPO at a valuation over $5 billion.</li>
-      <li><strong>DealerClub</strong>, founder. The reputation-based wholesale auction. Self-funded, built with the team behind it, acquired by Cars Commerce.</li>
-      <li>Before all of that: a used car dealership in Albany that sold 40+ cars a month, largely on eBay, years before online car sales were normal.</li>
-    </ul>
+    <TileGallery eyebrow="Built" title="What I've built" :items="built">
+      <p>
+        Three businesses, one thread: moving cars better than the last way. A lot on
+        eBay before that was normal, then the auction everyone in wholesale uses, then
+        the one built on reputation. <b>ACV</b> went public on the Nasdaq in 2021 and
+        <b>DealerClub</b> was acquired by Cars Commerce.
+      </p>
+    </TileGallery>
 
-    <div class="split flip">
-      <div>
-        <h2>Buying now</h2>
-        <p>
-          I'm looking to build a portfolio of franchise car dealerships because I believe
-          in the resiliency of the US auto industry and the overall dependency and cultural
-          stronghold that automobiles provide. I also buy and sell airplanes for fun.
-        </p>
-        <h2>Interested in</h2>
-        <ul>
-          <li>Franchise car dealerships: buying, selling, and brokering.</li>
-          <li>Airplanes worth owning or trading.</li>
-          <li>Early stage companies doing neat things with health and wellness, marketplaces, and transportation.</li>
-          <li>Air-cooled Porsches and other specialty cars and trucks.</li>
-        </ul>
-        <NuxtLink class="cta" to="/contact">Bring me a deal</NuxtLink>
-      </div>
-      <figure>
-        <img :src="url('/assets/photos/cessna-ttx.jpg')" alt="Joe Neiman on the ramp with a Cessna TTx" width="1200" height="1600" loading="lazy">
-      </figure>
-    </div>
-    </div>
+    <SectionRule />
+
+    <PathGrid eyebrow="Buying now" title="What I'm interested in" :items="interests">
+      <p>
+        I'm looking to build a portfolio of franchise car dealerships because I believe
+        in the resiliency of the US auto industry and the overall dependency and cultural
+        stronghold that automobiles provide. I also buy and sell airplanes for fun. If
+        you've got one of these, <b>I want to hear about it</b>.
+      </p>
+    </PathGrid>
   </div>
 </template>

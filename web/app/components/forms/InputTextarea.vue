@@ -1,5 +1,5 @@
 <template>
-  <FormGroup :id="id" :label="label" :help="help" :error="errorMessage" :required="required" :floating="floating">
+  <FormGroup :id="id" :label="label" :help="help" :error="errorMessage" :required="required && asterisk" :floating="floating">
     <textarea
       :id="id"
       :name="name"
@@ -28,6 +28,8 @@ const props = defineProps({
   placeholder: { type: String, default: '' },
   readonly: { type: Boolean, default: false },
   floating: { type: Boolean, default: false },
+  // Show the red star on a required field's label
+  asterisk: { type: Boolean, default: true },
 });
 
 defineEmits(['update:modelValue']);

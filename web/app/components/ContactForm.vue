@@ -7,26 +7,23 @@
     <AppForm v-else ref="form" :schema="schema" error-alert="summary" @submit="onSubmit">
       <template #default="{ isSubmitting }">
         <div class="row g-3">
-          <div class="col-12 col-md-6">
-            <InputText name="name" label="Name" autocomplete="name" required />
-          </div>
-          <div class="col-12 col-md-6">
-            <InputText name="email" label="Email" type="email" autocomplete="email" inputmode="email" required />
+          <div class="col-12">
+            <InputText name="name" label="Name" autocomplete="name" floating :asterisk="false" required />
           </div>
           <div class="col-12">
-            <InputSelect name="topic" label="What is this about?" :options="topics" placeholder="Pick one" required />
+            <InputText name="email" label="Email address" type="email" autocomplete="email" inputmode="email" floating :asterisk="false" required />
           </div>
           <div class="col-12">
             <InputTextarea
               name="message"
-              label="The short version"
+              label="Message"
               :rows="5"
-              help="A few sentences is plenty. Links welcome."
+              floating
+              :asterisk="false"
               required
             />
           </div>
-          <div class="col-12 d-flex flex-wrap align-items-center justify-content-between gap-3 mt-4">
-            <span class="small text-body-secondary">No lists, no follow-up sequences. Just a reply if it's a fit.</span>
+          <div class="col-12 d-flex justify-content-end mt-4">
             <button type="submit" class="btn btn-primary" :disabled="isSubmitting">
               <span v-if="isSubmitting" class="spinner-border spinner-border-sm me-2" aria-hidden="true" />
               Send it
@@ -42,20 +39,10 @@
 import { object, string } from 'yup';
 import { toTypedSchema } from '@vee-validate/yup';
 
-const topics = [
-  { value: 'dealership', label: 'A franchise dealership for sale' },
-  { value: 'airplane', label: 'An airplane worth a look' },
-  { value: 'startup', label: 'An early-stage company' },
-  { value: 'speaking', label: 'A speaking invitation' },
-  { value: 'merici', label: 'Something Merici-related' },
-  { value: 'other', label: 'Something else' },
-];
-
 const schema = toTypedSchema(
   object({
     name: string().trim().required('Your name is required.'),
     email: string().trim().required('An email is required.').email("That email doesn't look right."),
-    topic: string().required('Pick what this is about.'),
     message: string().trim().required('Tell me a little about it.').min(20, 'A little more detail helps.'),
   }),
 );
@@ -74,7 +61,7 @@ async function onSubmit(values) {
 
 <style scoped lang="scss">
 .form-card {
-  padding: clamp(1.25rem, 3vw, 2.25rem);
+  padding: clamp(1.5rem, 5vw, 4rem);
   background: var(--bg-alt);
   border-radius: $radius-tile;
 }

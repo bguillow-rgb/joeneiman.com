@@ -4,14 +4,15 @@
     :label="grouped && floating ? '' : label"
     :help="help"
     :error="errorMessage"
-    :required="required"
+    :required="required && asterisk"
     :floating="floating && !grouped"
+    :hide-label="hideLabel"
   >
     <div v-if="grouped" class="input-group" :class="{ 'is-invalid': invalid }">
       <span v-if="prefix" class="input-group-text">{{ prefix }}</span>
       <div v-if="floating" class="form-floating" :class="{ 'is-invalid': invalid }">
         <input v-bind="inputAttrs" :value="value ?? ''" @input="handleChange" @blur="handleBlur">
-        <label :for="id">{{ label }}<span v-if="required" class="text-danger" aria-hidden="true"> *</span></label>
+        <label :for="id">{{ label }}<span v-if="required && asterisk" class="text-danger" aria-hidden="true"> *</span></label>
       </div>
       <input v-else v-bind="inputAttrs" :value="value ?? ''" @input="handleChange" @blur="handleBlur">
       <span v-if="suffix" class="input-group-text">{{ suffix }}</span>
@@ -35,6 +36,10 @@ const props = defineProps({
   // 'sm' | 'lg'
   size: { type: String, default: '' },
   floating: { type: Boolean, default: false },
+  // Show the red star on a required field's label
+  asterisk: { type: Boolean, default: true },
+  // Keep the label for screen readers only (pair with a placeholder)
+  hideLabel: { type: Boolean, default: false },
 });
 
 defineEmits(['update:modelValue']);

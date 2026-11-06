@@ -11,18 +11,20 @@
 .form-control,
 .form-select {
   @include type('body');
+  // Same 50px as the buttons: 12px padding, 24px line, 1px border
+  line-height: 24px;
   color-scheme: dark;
 
   &:disabled,
   &[readonly] {
-    background-color: $surface;
+    background-color: $bg-alt;
     color: $muted;
     opacity: 1;
   }
 }
 
 select.form-select option {
-  background: $bg-alt;
+  background: $surface;
   color: $fg;
 }
 

@@ -13,7 +13,7 @@ const paths = [
     to: '/giving',
     icon: 'fa-solid fa-hand-holding-heart',
     title: 'Giving',
-    text: 'Merici, which is dismantling child trafficking, and SkyHope, where the plane gets patients where they need to be at no cost to them.',
+    text: 'Marici, which is dismantling child trafficking, and SkyHope, where the plane gets patients where they need to be at no cost to them.',
     more: 'Where it goes',
   },
   {

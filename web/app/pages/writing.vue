@@ -5,7 +5,6 @@ usePage({
   path: '/writing',
   description: 'Essays from Joe Neiman on entrepreneurship, deals, flying, and health. A book is on the way.',
 });
-const url = useUrl();
 </script>
 
 <template>
@@ -25,21 +24,48 @@ const url = useUrl();
     </PageHero>
 
     <div class="page-body">
-    <div class="split">
-      <div>
-        <p>
-          The essays are on their way, and they all feed the bigger project, which is a
-          book about entrepreneurship built from what actually happened to me, the wins
-          and the mistakes both.
-        </p>
+      <div class="signup" v-reveal.children>
+        <p class="upper-tag">Newsletter</p>
         <h2>Get the essays</h2>
-        <p class="muted">Want the pieces as they come out? Leave an email.</p>
+        <p>
+          The essays are on their way, and they all feed the bigger project: a book
+          about entrepreneurship built from what actually happened to me, the wins and
+          the mistakes both. Leave an email and each one lands in your inbox when it's done.
+        </p>
         <NewsletterForm />
       </div>
-      <figure>
-        <img :src="url('/assets/photos/joe-911-roof.jpg')" alt="Joe Neiman leaning on the roof of his white Porsche 911" width="1800" height="1200" loading="eager">
-      </figure>
-    </div>
     </div>
   </div>
 </template>
+
+<style scoped lang="scss">
+// One centered column: heading, a line of copy, the form
+.signup {
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 1rem 0 $band-margin;
+  text-align: center;
+
+  h2 { margin: 0 0 1.5rem; }
+
+  .upper-tag { margin-bottom: 0.75rem; }
+
+  p:not(.upper-tag) {
+    @include type('intro');
+    font-weight: 500;
+    color: var(--fg-soft);
+    margin: 0 0 2rem;
+  }
+
+  :deep(.newsletter) { margin: 0 auto; }
+
+  // Phones: left-aligned, like the rest of the body copy
+  @media (max-width: $sm-max) {
+    padding-bottom: $band-margin-mobile;
+    margin: 0;
+    text-align: left;
+
+    :deep(.newsletter) { margin: 0; }
+  }
+}
+</style>

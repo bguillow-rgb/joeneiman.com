@@ -25,33 +25,47 @@ const url = useUrl();
     </PageHero>
 
     <div class="page-body">
-    <div class="split">
-      <div>
+    <div class="row g-4 g-lg-5 align-items-center looking">
+      <div class="col-12 col-lg-6">
+        <p class="upper-tag">On stage</p>
         <h2>What I talk about</h2>
-        <ul>
-          <li>Recognizing opportunity, and having the confidence to go after it.</li>
-          <li>Building and scaling companies: from a yellow legal pad to a $5B IPO, with every mistake included.</li>
-          <li>What the grind actually costs. Stress, health, and building a business without putting the rest of your life on hold.</li>
-        </ul>
-        <h2>Where I've done this</h2>
-        <ul>
-          <li>Startup Grind Buffalo, fireside chat on building ACV.</li>
-          <li>43North's Latitude podcast, taped live in Buffalo.</li>
-          <li>Industry panels, including Used Carpalooza.</li>
-          <li>NEXT with Michael Sonnenfeldt, on stress, meditation, and reinvention.</li>
-        </ul>
-        <h2>Format</h2>
         <p>
-          Fireside chats and moderated conversations are where I'm best. I don't have a
-          canned deck, and honestly the rooms that get the most out of it are the ones
-          that come with real questions.
+          <b>Recognizing opportunity</b>, and having the confidence to go after it.
+          <b>Building and scaling companies</b>, from a yellow legal pad to a $5B IPO,
+          with every mistake included. And <b>what the grind actually costs</b>: stress,
+          health, and building a business without putting the rest of your life on hold.
         </p>
-        <NuxtLink class="cta" to="/contact">Book a conversation</NuxtLink>
+        <p>
+          I've done this at <b>Startup Grind Buffalo</b>, on 43North's <b>Latitude</b>
+          podcast taped live in Buffalo, on industry panels like Used Carpalooza, and on
+          <b>NEXT with Michael Sonnenfeldt</b>, talking about stress, meditation, and
+          reinvention.
+        </p>
+        <p>
+          <b>Fireside chats and moderated conversations</b> are where I'm best. I don't
+          have a canned deck, and the rooms that get the most out of it are the ones that
+          come with real questions.
+        </p>
       </div>
-      <figure>
-        <img :src="url('/assets/photos/studio-set.jpg')" alt="Joe Neiman on a video set before a recording" width="1600" height="1200" loading="lazy">
-      </figure>
+      <div class="col-12 col-lg-6 order-first order-lg-last">
+        <div class="bento">
+          <img class="tall" :src="url('/assets/photos/studio-set.jpg')" alt="Joe Neiman on a video set before a recording" loading="lazy">
+          <img :src="url('/assets/photos/ipo-day-nasdaq.jpg')" alt="ACV Auctions on the Nasdaq board on IPO day" loading="lazy">
+          <img :src="url('/assets/photos/43north-win.jpg')" alt="The ACV team celebrating the 43North win" loading="lazy">
+        </div>
+      </div>
     </div>
     </div>
   </div>
 </template>
+
+<style scoped lang="scss">
+// Same air before the closing band as the home page's last section
+.looking {
+  margin-bottom: $band-margin;
+
+  @media (max-width: $sm-max) {
+    margin-bottom: $band-margin-mobile;
+  }
+}
+</style>
