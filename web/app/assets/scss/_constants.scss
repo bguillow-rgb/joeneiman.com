@@ -187,11 +187,11 @@ $nav-line-height: 28px;
 $nav-btn-radius: 6px;
 $drawer-width: 320px;
 $drawer-header-height: 80px;
-$bar-bg: rgba(18, 20, 23, 0.85);
-$bar-blur: 8px;                  // was 24px; smaller is much cheaper on scroll
+// Nearly solid: there is no backdrop blur, so keep the show-through faint
+$bar-bg: rgba(18, 20, 23, 0.94);
 // One hairline for the bar's edge, section rules and card rings
 $hairline: rgba(255, 255, 255, 0.08);
-// The hairline ring and a faint, tight cast; the blur does most of the lifting
+// The hairline ring and a faint, tight cast
 $bar-shadow:
   0 0 0 1px $hairline,
   0 6px 16px -10px rgba(0, 0, 0, 0.35);

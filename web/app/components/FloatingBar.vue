@@ -57,10 +57,10 @@ watch(
   );
   border-radius: $bar-radius;
 
-  // The fill and blur live on a pseudo-element rather than the bar, so the
-  // filter can't make the bar the containing block for the fixed-position
-  // drawer inside it. The blur radius is kept small: the cost of a backdrop
-  // blur on scroll scales with its radius.
+  // The fill lives on a pseudo-element rather than the bar, so nothing on
+  // the bar itself can become the containing block for the fixed-position
+  // drawer inside it. No backdrop blur: it caused repaint glitches on
+  // scroll, so the fill is nearly solid instead.
   &::before {
     content: '';
     position: absolute;
@@ -68,8 +68,6 @@ watch(
     z-index: -1;
     border-radius: inherit;
     background: $bar-bg;
-    -webkit-backdrop-filter: blur($bar-blur);
-    backdrop-filter: blur($bar-blur);
     box-shadow: $bar-shadow;
     will-change: transform;
     transform: translateZ(0);
